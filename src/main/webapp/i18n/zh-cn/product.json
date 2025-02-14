@@ -1,0 +1,29 @@
+{
+  "wareHouseApp": {
+    "product": {
+      "home": {
+        "title": "产品",
+        "refreshListLabel": "刷新列表",
+        "createLabel": "创建新产品",
+        "createOrEditLabel": "创建或编辑产品",
+        "notFound": "没有找到产品"
+      },
+      "search": {
+        "placeHolder": "搜索产品..."
+      },
+      "created": "使用标识符创建新产品 {{ param }}",
+      "updated": "产品已更新标识符 {{ param }}",
+      "deleted": "已删除带有标识符的产品 {{ param }}",
+      "delete": {
+        "question": "您确定要删除产品吗 {{ id }}？"
+      },
+      "detail": {
+        "title": "产品"
+      },
+      "id": "ID",
+      "nameCn": "姓名 中文",
+      "nameVn": "名称 Vn",
+      "description": "描述"
+    }
+  }
+}

@@ -1,0 +1,73 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-product-image-heading"
+        data-cy="ProductImageCreateUpdateHeading"
+        jhiTranslate="wareHouseApp.productImage.home.createOrEditLabel"
+      >
+        Create or edit a Product Image
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" for="field_id" jhiTranslate="wareHouseApp.productImage.id">Id</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" for="field_type" jhiTranslate="wareHouseApp.productImage.type">Type</label>
+          <select class="form-control" id="field_type" data-cy="type" formControlName="type">
+            <option [ngValue]="null"></option>
+            @for (item of imageTypeCollection; track $index) {
+              <option [ngValue]="item[0]">{{ item[1] }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_base64" jhiTranslate="wareHouseApp.productImage.imageUrl">Image's Url</label>
+          <input type="text" class="form-control base64-image" name="base64" id="field_base64" data-cy="base64" formControlName="base64" />
+        </div>
+
+        @if (imgSrc) {
+          <div class="mb-3">
+            <jhi-img [src]="imgSrc" [alt]="'Img'"></jhi-img>
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" for="field_order" jhiTranslate="wareHouseApp.productImage.order">Order</label>
+          <select class="form-control" id="field_order" data-cy="order" name="order" formControlName="order" [compareWith]="compareOrder">
+            <option [ngValue]="null"></option>
+            @for (orderOption of ordersSharedCollection; track $index) {
+              <option [ngValue]="orderOption">
+                {{ orderOption.id }} - {{ orderOption.receiptDate }} - {{ orderOption.warehouseReceiptCode }}
+              </option>
+            }
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,117 @@
+{
+  "wareHouseApp": {
+    "order": {
+      "home": {
+        "title": "Orders",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Order",
+        "createOrEditLabel": "Create or edit a Order",
+        "notFound": "No Orders found"
+      },
+      "search": {
+        "placeHolder": "Search Orders by warehouse receipt code..."
+      },
+      "label": {
+        "warehouseReceiptCode": "Warehouse Receipt Code",
+        "clientCode": "Client Code",
+        "status": "Status",
+        "date": "Date by order status",
+        "itemPerPage": "Number of records per page"
+      },
+      "note1": {
+        "note": "** Search by the date of the status. If no status is selected, the default is to search by the receipt date at Bang Tuong Warehouse."
+      },
+      "button": {
+        "search": "Search",
+        "clear": "Clear"
+      },
+      "import": {
+        "label": "Import new Orders",
+        "title": "Upload new Orders by excel file",
+        "changeStatus": "Change Status",
+        "inputLabel": "Select excel file",
+        "inputTip": "Only .xlsx and .xls files are allowed.",
+        "importDesc": "Please select the Excel file you want to upload.",
+        "transportVehicle": "Transport Vehicle",
+        "transportVehicleDate": "Transport Vehicle Date"
+      },
+      "export": {
+        "label": "Export Orders",
+        "error": {
+          "emptyOrderExport": "Please select orders to export!",
+          "failed": "Order export failed, please contact administrator to continue."
+        }
+      },
+      "created": "A new Order is created with identifier {{ param }}",
+      "updated": "A Order is updated with identifier {{ param }}",
+      "deleted": "A Order is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Order {{ id }}?"
+      },
+      "updateStatus": {
+        "message": {
+          "success": "Update status for multiple order successed!"
+        },
+        "error": {
+          "noOrders": "No order selected!",
+          "failed": "Update status for multiple orders failed!"
+        }
+      },
+      "detail": {
+        "title": "Order"
+      },
+      "code": "Code",
+      "receiptDate": "Receipt Date",
+      "warehouseReceiptCode": "Warehouse Receipt Code",
+      "searchWarehouseReceiptCode": "Search Order by warehouse Receipt Code...",
+      "warehouseReceiveNote": "Warehouse Receive Note",
+      "status": "Status",
+      "changeStatus": "Change Status",
+      "piecesReceivedCount": "Pieces Count",
+      "piecesWareHouseCount": "Pieces Received Count",
+      "totalWeight": "Total Weight",
+      "totalCubicMeter": "Total Cubic Meter",
+      "extraFee": "Extra Fee",
+      "inlandFee": "Inland Fee",
+      "extraFeeDetail": "Extra Fee Detail",
+      "waybill": "Waybill",
+      "note": "Note",
+      "productImages": "Product Images",
+      "warehouse": "Warehouse",
+      "inlandLogistic": "Inland Logistic",
+      "client": "Client",
+      "product": "Product",
+      "productCn": "Product in Chinese",
+      "productVn": "Product in Vietnamese",
+      "unit": "Unit",
+      "bangTuongWareHouseDate": "BangTuong WareHouse Receipt Date",
+      "loadedOnVehicleDate": "Loaded On Vehicle Date",
+      "arrivedAtHNDate": "Arrived at Hanoi Date",
+      "deliveredDate": "Delivered Date",
+      "customerSignedDate": "Customer Signed Date",
+      "cancelDate": "Cancel Date",
+      "statusDate": "Status Date",
+      "statusEnum": {
+        "BANG_TUONG_WARE_HOUSE": "In BangTuong warehouse",
+        "LOADED_ON_VEHICLE": "Loaded on vehicle",
+        "ARRIVED_AT_HN": "Arrived at Ha Noi",
+        "DELIVERED": "Delivered",
+        "CUSTOMER_SIGNED": "Customer signed",
+        "CANCELED": "Customer canceled",
+        "null": "No Status"
+      },
+      "selectStatus": "-- Select Status --",
+      "selectCode": "-- Select Code --",
+      "importVehicleNumber": "Import Vehicle License Plate",
+      "arrangeVehicle": "Transit Vehicle License Plate",
+      "listCalculation": "Calculation Range",
+      "unitPriceWeight": "Unit Price by Weight",
+      "unitPriceCubicMeter": "Unit Price by CubicMeter",
+      "totalPrice": "Total Price",
+      "shippingAddressAndPhone": "Ship Address & Phone Number",
+      "exportVehicleNumber": "Export Vehicle License Plate",
+      "exportQuantity": "Export Quantity",
+      "exportDate": "Export Date"
+    }
+  }
+}

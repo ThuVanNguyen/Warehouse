@@ -1,0 +1,54 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <changeSet author="phanquan (generated)" id="1734966929082-8">
+        <dropForeignKeyConstraint baseTableName="jhi_order" constraintName="fk_jhi_order__client_id"/>
+    </changeSet>
+    <changeSet author="phanquan (generated)" id="1734966929082-9">
+        <dropForeignKeyConstraint baseTableName="product_image" constraintName="fk_product_image__order_id"/>
+    </changeSet>
+    <changeSet author="phanquan (generated)" id="1734966929082-1">
+        <createSequence incrementBy="1" sequenceName="client_seq" startValue="1"/>
+    </changeSet>
+    <changeSet author="phanquan (generated)" id="1734966929082-2">
+        <createSequence incrementBy="1" sequenceName="order_seq" startValue="1"/>
+    </changeSet>
+    <changeSet author="phanquan (generated)" id="1734966929082-3">
+        <createSequence incrementBy="1" sequenceName="product_image_seq" startValue="1"/>
+    </changeSet>
+    <changeSet author="phanquan (generated)" id="1734966929082-4">
+        <createTable tableName="jhi_client">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="jhi_clientPK"/>
+            </column>
+            <column name="code" type="VARCHAR(255)"/>
+            <column name="email" type="VARCHAR(255)"/>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="phone" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="phanquan (generated)" id="1734966929082-5">
+        <createTable tableName="jhi_product_image">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="jhi_product_imagePK"/>
+            </column>
+            <column name="base_64" type="VARCHAR(2048)"/>
+            <column name="code" type="VARCHAR(255)"/>
+            <column name="create_date" type="date"/>
+            <column name="len" type="BIGINT"/>
+            <column name="type" type="VARCHAR(255)"/>
+            <column name="order_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="phanquan (generated)" id="1734966929082-6">
+        <addForeignKeyConstraint baseColumnNames="order_id" baseTableName="jhi_product_image" constraintName="FK11a9qhcvbbb0qy32redju7xto" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="jhi_order" validate="true"/>
+    </changeSet>
+    <changeSet author="phanquan (generated)" id="1734966929082-7">
+        <addForeignKeyConstraint baseColumnNames="client_id" baseTableName="jhi_order" constraintName="FKkcb7cmadant6mskeuja0q2g15" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="jhi_client" validate="true"/>
+    </changeSet>
+    <changeSet author="phanquan (generated)" id="1734966929082-10">
+        <dropTable tableName="client"/>
+    </changeSet>
+    <changeSet author="phanquan (generated)" id="1734966929082-11">
+        <dropTable tableName="product_image"/>
+    </changeSet>
+</databaseChangeLog>

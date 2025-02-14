@@ -1,0 +1,28 @@
+{
+  "wareHouseApp": {
+    "inlandLogistic": {
+      "home": {
+        "title": "内陆物流",
+        "refreshListLabel": "刷新列表",
+        "createLabel": "打造内陆物流新格局",
+        "createOrEditLabel": "创建或编辑内陆物流",
+        "notFound": "未找到内陆物流"
+      },
+      "search": {
+        "placeHolder": "搜索内陆物流..."
+      },
+      "created": "使用标识符创建新的内陆物流 {{ param }}",
+      "updated": "内陆物流已更新标识符 {{ param }}",
+      "deleted": "删除带有标识符的内陆物流 {{ param }}",
+      "delete": {
+        "question": "您确定要删除内陆物流吗 {{ id }}？"
+      },
+      "detail": {
+        "title": "内陆物流"
+      },
+      "id": "ID",
+      "code": "代码",
+      "name": "姓名"
+    }
+  }
+}

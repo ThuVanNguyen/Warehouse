@@ -1,0 +1,158 @@
+{
+  "global": {
+    "title": "Kho Vận",
+    "browsehappy": "Bạn đang sử dụng một <strong>trình duyệt lỗi thời</strong>.  <a href=\"http://browsehappy.com/?locale=en\">nâng cấp trình duyệt của bạn</a> để cải thiện trải nghiệm của bạn.",
+    "menu": {
+      "home": "Trang chủ",
+      "jhipster-needle-menu-add-element": "JHipster sẽ bổ sung thêm các mục menu bổ sung tại đây (không dịch!)",
+      "entities": {
+        "main": "Quản lý kho vận",
+        "adminAuthority": "Quyền Admin",
+        "jhipster-needle-menu-add-entry": "JHipster sẽ thêm các thực thể bổ sung vào đây (không dịch!)",
+        "client": "Khách hàng",
+        "inlandLogistic": "Hậu cần nội địa",
+        "order": "Đơn hàng",
+        "product": "Sản phẩm",
+        "productImage": "Hình ảnh sản phẩm",
+        "unit": "Đơn vị",
+        "warehouse": "Kho"
+      },
+      "account": {
+        "main": "Tài khoản",
+        "settings": "Cài đặt",
+        "password": "Mật khẩu",
+        "sessions": "Phiên",
+        "login": "Đăng nhập",
+        "logout": "Đăng xuất",
+        "register": "Đăng ký"
+      },
+      "admin": {
+        "main": "Quản lý",
+        "userManagement": "Quản lý người dùng",
+        "tracker": "Trình theo dõi người dùng",
+        "metrics": "Số liệu",
+        "health": "Sức khỏe",
+        "configuration": "Cấu hình",
+        "logs": "Nhật ký",
+        "apidocs": "API",
+        "database": "Cơ sở dữ liệu",
+        "jhipster-needle-menu-add-admin-element": "JHipster sẽ bổ sung thêm các mục menu bổ sung tại đây (không dịch!)"
+      },
+      "language": "Ngôn ngữ"
+    },
+    "form": {
+      "username.label": "Tên người dùng",
+      "username.placeholder": "tên người dùng của bạn",
+      "currentpassword.label": "Mật khẩu hiện tại",
+      "currentpassword.placeholder": "Mật khẩu hiện tại",
+      "newpassword.label": "Mật khẩu mới",
+      "newpassword.placeholder": "Mật khẩu mới",
+      "confirmpassword.label": "Xác nhận mật khẩu mới",
+      "confirmpassword.placeholder": "Xác nhận mật khẩu mới",
+      "email.label": "E-mail",
+      "email.placeholder": "Email của bạn"
+    },
+    "messages": {
+      "info": {
+        "authenticated": {
+          "prefix": "Vui lòng ",
+          "link": "đăng nhập",
+          "suffix": ", bạn có thể thử các tài khoản mặc định:<br/>- Quản trị viên (đăng nhập=\"admin\" và mật khẩu=\"admin\") <br/>- Người dùng (đăng nhập=\"người dùng\" và mật khẩu=\"người dùng\")."
+        },
+        "register": {
+          "noaccount": "Bạn chưa có tài khoản?",
+          "link": "Đăng ký tài khoản mới"
+        }
+      },
+      "error": {
+        "dontmatch": "Mật khẩu và xác nhận của nó không khớp!"
+      },
+      "validate": {
+        "newpassword": {
+          "required": "Mật khẩu của bạn là bắt buộc.",
+          "minlength": "Mật khẩu của bạn bắt buộc phải có ít nhất 4 ký tự.",
+          "maxlength": "Mật khẩu của bạn không thể dài hơn 50 ký tự.",
+          "strength": "Độ mạnh của mật khẩu:"
+        },
+        "confirmpassword": {
+          "required": "Mật khẩu xác nhận của bạn là bắt buộc.",
+          "minlength": "Mật khẩu xác nhận của bạn phải có ít nhất 4 ký tự.",
+          "maxlength": "Mật khẩu xác nhận của bạn không thể dài hơn 50 ký tự."
+        },
+        "email": {
+          "required": "Email của bạn là bắt buộc.",
+          "invalid": "Email của bạn không hợp lệ.",
+          "minlength": "Email của bạn bắt buộc phải có ít nhất 5 ký tự.",
+          "maxlength": "Email của bạn không thể dài hơn 50 ký tự."
+        }
+      }
+    },
+    "field": {
+      "id": "NHẬN DẠNG"
+    },
+    "ribbon": {
+      "dev": "Phát triển"
+    },
+    "item-count": "Đang hiển thị {{first}} - {{second}} của {{total}} mặt hàng."
+  },
+  "entity": {
+    "action": {
+      "addblob": "Thêm đốm màu",
+      "addimage": "Thêm hình ảnh",
+      "back": "Quay lại",
+      "cancel": "Hủy bỏ",
+      "import": "Nhập",
+      "export": "Xuất",
+      "Upload": "Tải lên",
+      "delete": "Xóa bỏ",
+      "edit": "Sửa",
+      "open": "Mở",
+      "save": "Cập nhật",
+      "view": "Xem",
+      "show": "Trình diễn {{otherEntity}}"
+    },
+    "detail": {
+      "field": "Trường",
+      "value": "Giá trị"
+    },
+    "delete": {
+      "title": "Xác nhận thao tác xóa"
+    },
+    "validation": {
+      "required": "Trường này là bắt buộc.",
+      "minlength": "Trường này bắt buộc phải có ít nhất {{ min }} nhân vật.",
+      "maxlength": "Trường này không thể dài hơn {{ max }} nhân vật.",
+      "min": "Trường này ít nhất phải có {{ min }}.",
+      "max": "Trường này không thể nhiều hơn {{ max }}.",
+      "minbytes": "Trường này ít nhất phải có {{ min }} byte.",
+      "maxbytes": "Trường này không thể nhiều hơn {{ max }} byte.",
+      "pattern": "Trường này phải tuân theo mẫu cho {{ pattern }}.",
+      "number": "Trường này phải là một số.",
+      "datetimelocal": "Trường này phải là ngày và giờ.",
+      "patternLogin": "Trường này chỉ có thể chứa các chữ cái, chữ số và địa chỉ e-mail."
+    },
+    "filters": {
+      "set": "Các bộ lọc sau được đặt",
+      "clear": "Xóa bộ lọc",
+      "clearAll": "Xóa tất cả bộ lọc"
+    }
+  },
+  "error": {
+    "internalServerError": "Lỗi máy chủ nội bộ",
+    "server.not.reachable": "Máy chủ không thể truy cập được",
+    "url.not.found": "Không tìm thấy",
+    "NotNull": "Cánh đồng {{ fieldName }} không thể trống rỗng!",
+    "Size": "Cánh đồng {{ fieldName }} không đáp ứng yêu cầu về kích thước tối thiểu/tối đa!",
+    "userexists": "Tên đăng nhập đã được sử dụng!",
+    "emailexists": "Email đã được sử dụng!",
+    "idexists": "Một cái mới {{ entityName }} không thể đã có ID",
+    "idnull": "ID không hợp lệ",
+    "idinvalid": "ID không hợp lệ",
+    "idnotfound": "Không thể tìm thấy ID",
+    "file": {
+      "could.not.extract": "Không thể giải nén tập tin",
+      "not.image": "Tệp được cho là một hình ảnh nhưng lại bị phát hiện là \"{{ fileType }}\""
+    }
+  },
+  "footer": "Đây là chân trang của bạn"
+}

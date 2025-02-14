@@ -1,0 +1,102 @@
+{
+  "metrics": {
+    "title": "应用指标",
+    "refresh.button": "刷新",
+    "updating": "更新中...",
+    "jvm": {
+      "title": "JVM 指标",
+      "memory": {
+        "title": "记忆",
+        "total": "总内存",
+        "heap": "堆内存",
+        "nonheap": "非堆内存"
+      },
+      "threads": {
+        "title": "线程数",
+        "all": "全部",
+        "runnable": "可运行",
+        "timedwaiting": "定时等待",
+        "waiting": "等待",
+        "blocked": "被阻止",
+        "dump": {
+          "title": "线程转储",
+          "id": "ID： ",
+          "blockedtime": "封锁时间",
+          "blockedcount": "阻塞计数",
+          "waitedtime": "等待时间",
+          "waitedcount": "等待计数",
+          "lockname": "锁名称",
+          "stacktrace": "堆栈跟踪",
+          "show": "显示堆栈跟踪",
+          "hide": "隐藏堆栈跟踪"
+        }
+      },
+      "gc": {
+        "title": "垃圾收集",
+        "marksweepcount": "标记扫描计数",
+        "marksweeptime": "标记扫描时间",
+        "scavengecount": "清除计数",
+        "scavengetime": "扫荡时间"
+      },
+      "http": {
+        "title": "HTTP 请求（时间以毫秒为单位）",
+        "active": "主动请求：",
+        "total": "请求总数：",
+        "table": {
+          "code": "代码",
+          "count": "数数",
+          "mean": "意思是",
+          "average": "平均的",
+          "max": "最大限度"
+        },
+        "code": {
+          "ok": "好的",
+          "notfound": "未找到",
+          "servererror": "服务器错误"
+        }
+      }
+    },
+    "servicesstats": {
+      "title": "服务统计（时间以毫秒为单位）",
+      "table": {
+        "name": "服务名称",
+        "count": "数数",
+        "mean": "意思是",
+        "min": "最小",
+        "max": "最大限度",
+        "p50": "p50",
+        "p75": "p75",
+        "p95": "p95",
+        "p99": "p99"
+      }
+    },
+    "cache": {
+      "title": "缓存统计",
+      "cachename": "缓存名称",
+      "hits": "缓存命中",
+      "misses": "缓存未命中",
+      "gets": "缓存获取",
+      "puts": "缓存放置",
+      "removals": "缓存删除",
+      "evictions": "缓存驱逐",
+      "hitPercent": "缓存命中%",
+      "missPercent": "缓存未命中百分比",
+      "averageGetTime": "平均获取时间（微秒）",
+      "averagePutTime": "平均放置时间（微秒）",
+      "averageRemoveTime": "平均移除时间（微秒）"
+    },
+    "datasource": {
+      "usage": "连接池使用情况",
+      "title": "数据源统计（时间以毫秒为单位）",
+      "name": "池使用情况",
+      "count": "数数",
+      "mean": "意思是",
+      "min": "最小",
+      "max": "最大限度",
+      "p50": "p50",
+      "p75": "p75",
+      "p95": "p95",
+      "p99": "p99"
+    }
+  }
+}

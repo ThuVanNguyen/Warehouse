@@ -1,0 +1,24 @@
+{
+  "register": {
+    "title": "登记",
+    "form": {
+      "button": "登记"
+    },
+    "messages": {
+      "validate": {
+        "login": {
+          "required": "您的用户名是必需的。",
+          "minlength": "您的用户名必须至少包含 1 个字符。",
+          "maxlength": "您的用户名不能超过 50 个字符。",
+          "pattern": "您的用户名无效。"
+        }
+      },
+      "success": "<strong>注册已保存！</strong> 请检查您的电子邮件以进行确认。",
+      "error": {
+        "fail": "<strong>注册失败！</strong> 请稍后重试。",
+        "userexists": "<strong>登录名已注册！</strong> 请选择另一项。",
+        "emailexists": "<strong>电子邮件已被使用！</strong> 请选择另一项。"
+      }
+    }
+  }
+}

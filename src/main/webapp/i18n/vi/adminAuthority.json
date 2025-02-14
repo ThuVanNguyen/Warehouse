@@ -1,0 +1,23 @@
+{
+  "wareHouseApp": {
+    "adminAuthority": {
+      "home": {
+        "title": "Quyền hạn",
+        "refreshListLabel": "Làm mới danh sách",
+        "createLabel": "Tạo mới Quyền hạn",
+        "createOrEditLabel": "Tạo hoặc chỉnh sửa Quyền hạn",
+        "notFound": "Không tìm thấy Quyền hạn nào"
+      },
+      "created": "Một Quyền hạn mới đã được tạo với mã định danh {{ param }}",
+      "updated": "Quyền hạn đã được cập nhật với mã định danh {{ param }}",
+      "deleted": "Quyền hạn đã bị xóa với mã định danh {{ param }}",
+      "delete": {
+        "question": "Bạn có chắc chắn muốn xóa Quyền hạn {{ id }} không?"
+      },
+      "detail": {
+        "title": "Chi tiết Quyền hạn"
+      },
+      "name": "Tên"
+    }
+  }
+}

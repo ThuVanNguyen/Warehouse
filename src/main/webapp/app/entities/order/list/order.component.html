@@ -1,0 +1,499 @@
+<div class="page-header">
+  <h2 id="page-heading" data-cy="OrderHeading">
+    <span style="font-weight: 600" jhiTranslate="wareHouseApp.order.home.title">Orders</span>
+  </h2>
+</div>
+
+<div class="page-body">
+  <div class="option-group row mb-3">
+    <!-- Search Input -->
+    <div class="d-flex col-12 col-md-6 col-lg-4 mb-3 mb-md-0 justify-content-between">
+      <div class="w-100 input-group search-input">
+        <input
+          style="width: 300px"
+          type="text"
+          class="form-control"
+          placeholder="{{ 'wareHouseApp.order.search.placeHolder' | translate }}"
+          data-cy="searchInput"
+          [(ngModel)]="searchString"
+          [disabled]="showAdvancedSearch"
+        />
+        <fa-icon class="input-group-text" icon="search" (click)="search()"></fa-icon>
+        <fa-icon class="input-group-text" (click)="toggleAdvancedSearch()" [icon]="showAdvancedSearch ? 'times' : 'plus'"></fa-icon>
+      </div>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="col-12 col-md-6 col-lg-8 d-flex justify-content-end flex-wrap">
+      <button class="btn btn-info me-2 mb-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [animation]="isLoading ? 'spin' : undefined"></fa-icon>
+        <span jhiTranslate="wareHouseApp.order.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      @if (isAdminOrEditor) {
+        <button class="btn btn-primary me-2 mb-2" jhiTranslate="wareHouseApp.order.changeStatus" (click)="changeStatus()">
+          Change status
+        </button>
+
+        <button id="jh-import-entities" data-cy="entityImportButton" class="btn btn-primary me-2 mb-2" (click)="import()">
+          <span jhiTranslate="wareHouseApp.order.import.label">Import new Orders</span>
+        </button>
+
+        <button id="jh-export-entities" data-cy="entityExportButton" class="btn btn-primary me-2 mb-2" (click)="export()">
+          <span jhiTranslate="wareHouseApp.order.export.label">Export all Orders</span>
+        </button>
+
+        <button id="jh-create-entity" data-cy="entityCreateButton" class="btn btn-primary mb-2" [routerLink]="['/order/new']">
+          <fa-icon icon="plus"></fa-icon>
+          <span jhiTranslate="wareHouseApp.order.home.createLabel">Create a new Order</span>
+        </button>
+      }
+    </div>
+  </div>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <!-- Advanced Search Fields -->
+  <div *ngIf="showAdvancedSearch" class="advanced-search-container">
+    <div class="row">
+      <div class="col-md-6 col-12 mb-2">
+        <label for="WarehouseReceiptCode" jhiTranslate="wareHouseApp.order.label.warehouseReceiptCode">Warehouse Receipt Code</label>
+        <input
+          type="text"
+          class="form-control"
+          id="WarehouseReceiptCode"
+          placeholder="{{ 'wareHouseApp.order.searchWarehouseReceiptCode' | translate }}"
+          data-cy="searchInput"
+          [(ngModel)]="searchString"
+        />
+      </div>
+      <div class="col-md-6 col-12 mb-2">
+        <label for="status" jhiTranslate="wareHouseApp.order.label.status">Status</label>
+        <select id="status" class="form-select" [(ngModel)]="selectedStatus">
+          <option value="" disabled jhiTranslate="wareHouseApp.order.selectStatus"></option>
+          <option *ngFor="let status of statusOptions; let i = index" [value]="status[0]">
+            {{ i + 1 + ' - ' + (status[1] | translate) }}
+          </option>
+        </select>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 col-12">
+        <label for="code" jhiTranslate="wareHouseApp.order.label.clientCode">Client Code</label>
+        <select id="code" class="form-select" [(ngModel)]="clientCode">
+          <option value="" disabled jhiTranslate="wareHouseApp.order.selectCode"></option>
+          <option *ngFor="let code of clientCodes" [value]="code">{{ code }}</option>
+        </select>
+      </div>
+      <div class="col-md-6 col-12">
+        <label for="date" jhiTranslate="wareHouseApp.order.label.date">Date</label>
+        <div class="input-group">
+          <input
+            style="width: 90%"
+            id="date"
+            type="text"
+            class="form-control date-search"
+            ngbDatepicker
+            #statusDateChangeDp="ngbDatepicker"
+            [(ngModel)]="selectedDate"
+            (ngModelChange)="formatDateForBackend($event)"
+          />
+          <button type="button" class="btn btn-secondary" (click)="statusDateChangeDp.toggle()">
+            <fa-icon icon="calendar-alt"></fa-icon>
+          </button>
+          <span style="font-size: 14px; color: gray; font-weight: 400; font-style: italic" jhiTranslate="wareHouseApp.order.note1.note">
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="d-flex justify-content-start mt-3 mb-3">
+      <button class="btn btn-primary" (click)="search()">
+        <fa-icon icon="search"></fa-icon>
+        <span jhiTranslate="wareHouseApp.order.button.search">Search</span>
+      </button>
+      <button class="btn btn-danger ms-2" (click)="resetFormAndReload()">
+        <fa-icon icon="times"></fa-icon>
+        <span jhiTranslate="wareHouseApp.order.button.clear">Clear</span>
+      </button>
+    </div>
+  </div>
+
+  @if (orders?.length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="wareHouseApp.order.home.notFound">No Orders found</span>
+    </div>
+  }
+
+  @if (orders && orders.length > 0) {
+    <div class="table-sticky table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [sortState]="sortState" (sortChange)="navigateToWithComponentValues($event)">
+            <th scope="col">
+              <div class="d-flex">
+                <input type="checkbox" [checked]="isAllSelected" (change)="toggleSelectAll($event)" />
+              </div>
+            </th>
+
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span jhiTranslate="wareHouseApp.order.code">Code</span>
+
+                <fa-icon class="p-1 fa-2xs" icon="sort"></fa-icon>
+              </div>
+            </th>
+
+            <th scope="col" jhiSortBy="warehouseReceiptCode">
+              <div class="d-flex">
+                <span jhiTranslate="wareHouseApp.order.warehouseReceiptCode">Warehouse Receipt Code</span>
+
+                <fa-icon class="p-1 fa-2xs" icon="sort"></fa-icon>
+              </div>
+            </th>
+
+            <th scope="col" jhiSortBy="waybill">
+              <div class="d-flex">
+                <span jhiTranslate="wareHouseApp.order.waybill">Waybill</span>
+
+                <fa-icon class="p-1 fa-2xs" icon="sort"></fa-icon>
+              </div>
+            </th>
+
+            <th scope="col" jhiSortBy="client.id">
+              <div class="d-flex">
+                <span jhiTranslate="wareHouseApp.order.client">Client</span>
+
+                <fa-icon class="p-1 fa-2xs" icon="sort"></fa-icon>
+              </div>
+            </th>
+
+            <th scope="col" jhiSortBy="status">
+              <div class="d-flex">
+                <span jhiTranslate="wareHouseApp.order.status">Status</span>
+                <fa-icon class="p-1 fa-2xs" icon="sort"></fa-icon>
+              </div>
+            </th>
+
+            <th scope="col" jhiSortBy="productCn">
+              <div class="d-flex">
+                <span jhiTranslate="wareHouseApp.order.productCn">Product in Chinese</span>
+
+                <fa-icon class="p-1 fa-2xs" icon="sort"></fa-icon>
+              </div>
+            </th>
+
+            <th scope="col" jhiSortBy="productVn">
+              <div class="d-flex">
+                <span jhiTranslate="wareHouseApp.order.productVn">Product in Vietnamese</span>
+
+                <fa-icon class="p-1 fa-2xs" icon="sort"></fa-icon>
+              </div>
+            </th>
+
+            <th scope="col" jhiSortBy="piecesReceivedCount">
+              <div class="d-flex">
+                <span jhiTranslate="wareHouseApp.order.piecesReceivedCount">Pieces Received Count</span>
+
+                <fa-icon class="p-1 fa-2xs" icon="sort"></fa-icon>
+              </div>
+            </th>
+
+            <th scope="col" jhiSortBy="piecesLoadedCount">
+              <div class="d-flex">
+                <span jhiTranslate="wareHouseApp.order.piecesWareHouseCount">Pieces Warehouse Count</span>
+
+                <fa-icon class="p-1 fa-2xs" icon="sort"></fa-icon>
+              </div>
+            </th>
+
+            <th scope="col" jhiSortBy="totalWeight">
+              <div class="d-flex">
+                <span jhiTranslate="wareHouseApp.order.totalWeight">Total Weight</span>
+
+                <fa-icon class="p-1 fa-2xs" icon="sort"></fa-icon>
+              </div>
+            </th>
+
+            <th scope="col" jhiSortBy="totalCubicMeter">
+              <div class="d-flex">
+                <span jhiTranslate="wareHouseApp.order.totalCubicMeter">Total Cubic Meter</span>
+
+                <fa-icon class="p-1 fa-2xs" icon="sort"></fa-icon>
+              </div>
+            </th>
+
+            @if (isAdminOrEditor) {
+              <th scope="col" jhiSortBy="extraFee">
+                <div class="d-flex">
+                  <span jhiTranslate="wareHouseApp.order.listCalculation">List Calculation</span>
+
+                  <fa-icon class="p-1 fa-2xs" icon="sort"></fa-icon>
+                </div>
+              </th>
+
+              <th scope="col" jhiSortBy="inlandFee">
+                <div class="d-flex">
+                  <span jhiTranslate="wareHouseApp.order.unitPriceWeight">Unit Price Weight</span>
+
+                  <fa-icon class="p-1 fa-2xs" icon="sort"></fa-icon>
+                </div>
+              </th>
+
+              <th scope="col" jhiSortBy="extraFeeDetail">
+                <div class="d-flex">
+                  <span jhiTranslate="wareHouseApp.order.unitPriceCubicMeter">Unit Price Cubic Meter</span>
+
+                  <fa-icon class="p-1 fa-2xs" icon="sort"></fa-icon>
+                </div>
+              </th>
+
+              <th scope="col" jhiSortBy="inlandLogistic">
+                <div class="d-flex">
+                  <span jhiTranslate="wareHouseApp.order.totalPrice">Total Price</span>
+
+                  <fa-icon class="p-1 fa-2xs" icon="sort"></fa-icon>
+                </div>
+              </th>
+            }
+
+            <th scope="col" jhiSortBy="bangTuongWareHouseDate">
+              <div class="d-flex">
+                <span jhiTranslate="wareHouseApp.order.bangTuongWareHouseDate">Bang Tuong Warehouse Date</span>
+
+                <fa-icon class="p-1 fa-2xs" icon="sort"></fa-icon>
+              </div>
+            </th>
+
+            <th scope="col" jhiSortBy="loadedOnVehicleDate">
+              <div class="d-flex">
+                <span jhiTranslate="wareHouseApp.order.loadedOnVehicleDate">Load on Vehicle Date</span>
+
+                <fa-icon class="p-1 fa-2xs" icon="sort"></fa-icon>
+              </div>
+            </th>
+
+            <th scope="col" jhiSortBy="arrivedAtHNDate">
+              <div class="d-flex">
+                <span jhiTranslate="wareHouseApp.order.arrivedAtHNDate">Arrived at Hanoi Date</span>
+
+                <fa-icon class="p-1 fa-2xs" icon="sort"></fa-icon>
+              </div>
+            </th>
+
+            <th scope="col" jhiSortBy="deliveredDate">
+              <div class="d-flex">
+                <span jhiTranslate="wareHouseApp.order.deliveredDate">Delivered Date</span>
+
+                <fa-icon class="p-1 fa-2xs" icon="sort"></fa-icon>
+              </div>
+            </th>
+
+            <th scope="col" jhiSortBy="customerSignedDate">
+              <div class="d-flex">
+                <span jhiTranslate="wareHouseApp.order.customerSignedDate">Customer Signed Date</span>
+
+                <fa-icon class="p-1 fa-2xs" icon="sort"></fa-icon>
+              </div>
+            </th>
+
+            <th scope="col" jhiSortBy="cancelDate">
+              <div class="d-flex">
+                <span jhiTranslate="wareHouseApp.order.cancelDate">Cancel Date</span>
+
+                <fa-icon class="p-1 fa-2xs" icon="sort"></fa-icon>
+              </div>
+            </th>
+
+            <th scope="col" jhiSortBy="shippingAddressAndPhone">
+              <div class="d-flex">
+                <span jhiTranslate="wareHouseApp.order.shippingAddressAndPhone">Shipping Address and Phone number</span>
+
+                <fa-icon class="p-1 fa-2xs" icon="sort"></fa-icon>
+              </div>
+            </th>
+
+            <th scope="col" jhiSortBy="importVehicleNumber">
+              <div class="d-flex">
+                <span jhiTranslate="wareHouseApp.order.importVehicleNumber">Import Vehicle Number</span>
+
+                <fa-icon class="p-1 fa-2xs" icon="sort"></fa-icon>
+              </div>
+            </th>
+
+            <th scope="col" jhiSortBy="arrangeVehicle">
+              <div class="d-flex">
+                <span jhiTranslate="wareHouseApp.order.arrangeVehicle">Arrange Vehicle</span>
+
+                <fa-icon class="p-1 fa-2xs" icon="sort"></fa-icon>
+              </div>
+            </th>
+
+            <th scope="col" jhiSortBy="exportVehicleNumber">
+              <div class="d-flex">
+                <span jhiTranslate="wareHouseApp.order.exportVehicleNumber">Export Vehicle Number</span>
+
+                <fa-icon class="p-1 fa-2xs" icon="sort"></fa-icon>
+              </div>
+            </th>
+
+            <th scope="col" jhiSortBy="exportDate">
+              <div class="d-flex">
+                <span jhiTranslate="wareHouseApp.order.exportDate">Export Date</span>
+
+                <fa-icon class="p-1 fa-2xs" icon="sort"></fa-icon>
+              </div>
+            </th>
+
+            <th scope="col" jhiSortBy="exportQuantity">
+              <div class="d-flex">
+                <span jhiTranslate="wareHouseApp.order.exportQuantity">Export Quantity</span>
+
+                <fa-icon class="p-1 fa-2xs" icon="sort"></fa-icon>
+              </div>
+            </th>
+
+            <th scope="col" jhiSortBy="note">
+              <div class="d-flex">
+                <span jhiTranslate="wareHouseApp.order.note">Note</span>
+
+                <fa-icon class="p-1 fa-2xs" icon="sort"></fa-icon>
+              </div>
+            </th>
+
+            @if (isAdminOrEditor) {
+              <th scope="col" jhiSortBy="productImages">
+                <div class="d-flex">
+                  <span jhiTranslate="wareHouseApp.order.productImages">Product Image</span>
+
+                  <fa-icon class="p-1 fa-2xs" icon="sort"></fa-icon>
+                </div>
+              </th>
+            }
+            <th scope="col"></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          @for (order of orders; track trackId(order)) {
+            <tr data-cy="entityTable">
+              <td>
+                <div class="d-flex align-items-center">
+                  <input type="checkbox" [checked]="isOrderSelected(order) || isAllSelected" (change)="selectOrder(order)" />
+                </div>
+              </td>
+              <td>
+                <a [routerLink]="['/order', order.id, 'view']">{{ order.id }}</a>
+              </td>
+              <td>
+                <a [routerLink]="['/order', order.id, 'view']">{{ order.warehouseReceiptCode }}</a>
+              </td>
+              <td>
+                <div>
+                  <a [routerLink]="['/order', order.id, 'view']">{{ order.waybill }}</a>
+                </div>
+              </td>
+              <td>
+                @if (order.client) {
+                  <div>
+                    <a [routerLink]="['/client', order.client.id, 'view']">{{ order.client.code }}</a>
+                  </div>
+                }
+              </td>
+              <td>{{ 'wareHouseApp.order.statusEnum.' + order.status | translate }}</td>
+              <td>{{ order.productCn }}</td>
+              <td>{{ order.productVn }}</td>
+              <td>{{ order.piecesReceivedCount }}</td>
+              <td>{{ order.piecesWareHouseCount }}</td>
+              <td>{{ order.totalWeight }}</td>
+              <td>{{ order.totalCubicMeter }}</td>
+              @if (isAdminOrEditor) {
+                <td>{{ order.listCalculation }}</td>
+                <td>{{ order.unitPriceWeight }}</td>
+                <td>{{ order.unitPriceCubicMeter }}</td>
+                <td>{{ order.totalPrice }}</td>
+              }
+              <td>{{ order.receiptDate | formatSplashDate }}</td>
+              <td>{{ order.loadedOnVehicleDate | formatSplashDate }}</td>
+              <td>{{ order.arrivedAtHNDate | formatSplashDate }}</td>
+              <td>{{ order.deliveredDate | formatSplashDate }}</td>
+              <td>{{ order.customerSignedDate | formatSplashDate }}</td>
+              <td>{{ order.cancelDate | formatSplashDate }}</td>
+              <td>{{ order.shippingAddressAndPhone }}</td>
+              <td>{{ order.importVehicleNumber }}</td>
+              <td>{{ order.arrangeVehicle }}</td>
+              <td>{{ order.exportVehicleNumber }}</td>
+              <td>{{ order.exportDate | formatSplashDate }}</td>
+              <td>{{ order.exportQuantity }}</td>
+              <td>{{ order.note }}</td>
+              @if (isAdminOrEditor) {
+                <td>
+                  @if (order.productImages && order.productImages!.length > 0) {
+                    @for (image of order!.productImages; track $index) {
+                      <div>
+                        <img [src]="image.base64" width="70px" alt="{{ image.base64 }}" />
+                      </div>
+                    }
+                  }
+                </td>
+              }
+              <td class="text-end">
+                <a [routerLink]="['/order', order.id, 'view']" class="btn btn-sm" data-cy="entityDetailsButton">
+                  <fa-icon icon="eye" style="color: dodgerblue"></fa-icon>
+                  <!--                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>-->
+                </a>
+
+                @if (isAdminOrEditor) {
+                  <fa-icon (click)="navigateToDuplicatePage(order)" icon="copy" style="color: plum" class="btn btn-sm"></fa-icon>
+                  <a [routerLink]="['/order', order.id, 'edit']" class="btn btn-sm" data-cy="entityEditButton">
+                    <fa-icon icon="pencil-alt" style="color: forestgreen"></fa-icon>
+                    <!--                  <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>-->
+                  </a>
+                  <button type="submit" (click)="delete(order)" class="btn btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="trash-can" style="color: red"></fa-icon>
+                    <!--                  <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>-->
+                  </button>
+                }
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+</div>
+
+<div class="d-flex justify-content-between align-items-center pt-3">
+  <div>
+    <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+  </div>
+
+  <div class="d-flex" style="gap: 10px">
+    <label for="itemsPerPage" class="mt-2">{{ 'wareHouseApp.order.label.itemPerPage' | translate }}:</label>
+    <select
+      id="itemsPerPage"
+      class="form-select"
+      style="width: auto; height: min-content"
+      [ngModel]="itemsPerPage"
+      (ngModelChange)="updateItemsPerPage($event)"
+    >
+      @for (option of itemsPerPageOptions; track $index) {
+        <option [value]="option">{{ option }}</option>
+      }
+    </select>
+
+    @if (orders && orders.length > 0) {
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [page]="page"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="navigateToPage($event)"
+      ></ngb-pagination>
+    }
+  </div>
+</div>

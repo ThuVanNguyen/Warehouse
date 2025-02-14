@@ -1,0 +1,29 @@
+{
+  "wareHouseApp": {
+    "product": {
+      "home": {
+        "title": "Sản phẩm",
+        "refreshListLabel": "Làm mới danh sách",
+        "createLabel": "Tạo mới Sản phẩm",
+        "createOrEditLabel": "Tạo hoặc chỉnh sửa Sản phẩm",
+        "notFound": "Không tìm thấy Sản phẩm nào"
+      },
+      "search": {
+        "placeHolder": "Tìm kiếm sản phẩm..."
+      },
+      "created": "Một Sản phẩm mới đã được tạo với mã định danh {{ param }}",
+      "updated": "Sản phẩm đã được cập nhật với mã định danh {{ param }}",
+      "deleted": "Sản phẩm đã bị xóa với mã định danh {{ param }}",
+      "delete": {
+        "question": "Bạn có chắc chắn muốn xóa Sản phẩm {{ id }} không?"
+      },
+      "detail": {
+        "title": "Sản phẩm"
+      },
+      "id": "Mã định danh",
+      "nameCn": "Tên CN",
+      "nameVn": "Tên VN",
+      "description": "Mô tả"
+    }
+  }
+}

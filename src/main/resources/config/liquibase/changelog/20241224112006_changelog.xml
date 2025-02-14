@@ -1,0 +1,33 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <changeSet author="ADM (generated)" id="1735039218942-1">
+        <dropTable tableName="client"/>
+    </changeSet>
+    <changeSet author="ADM (generated)" id="1735039218942-2">
+        <dropTable tableName="inland_logistic"/>
+    </changeSet>
+    <changeSet author="ADM (generated)" id="1735039218942-3">
+        <dropTable tableName="product"/>
+    </changeSet>
+    <changeSet author="ADM (generated)" id="1735039218942-4">
+        <dropTable tableName="product_image"/>
+    </changeSet>
+    <changeSet author="ADM (generated)" id="1735039218942-5">
+        <dropTable tableName="unit"/>
+    </changeSet>
+    <changeSet author="ADM (generated)" id="1735039218942-6">
+        <dropTable tableName="warehouse"/>
+    </changeSet>
+    <changeSet author="ADM (generated)" id="1735039218942-7">
+        <dropColumn columnName="inland_logistic_id" tableName="jhi_order"/>
+    </changeSet>
+    <changeSet author="ADM (generated)" id="1735039218942-8">
+        <dropColumn columnName="product_id" tableName="jhi_order"/>
+    </changeSet>
+    <changeSet author="ADM (generated)" id="1735039218942-9">
+        <dropColumn columnName="unit_id" tableName="jhi_order"/>
+    </changeSet>
+    <changeSet author="ADM (generated)" id="1735039218942-10">
+        <dropColumn columnName="warehouse_id" tableName="jhi_order"/>
+    </changeSet>
+</databaseChangeLog>

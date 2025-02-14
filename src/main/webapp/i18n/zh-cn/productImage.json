@@ -1,0 +1,45 @@
+{
+  "wareHouseApp": {
+    "productImage": {
+      "home": {
+        "title": "产品图片",
+        "refreshListLabel": "刷新列表",
+        "createLabel": "创建新的产品图片",
+        "createOrEditLabel": "创建或编辑产品图片",
+        "notFound": "未找到产品图片"
+      },
+      "search": {
+        "placeHolder": "搜索产品图片..."
+      },
+      "convert": {
+        "title": "上传图片",
+        "convertDesc": "请选择您要上传的图片。",
+        "inputTip": "只允许图像文件。"
+      },
+      "typeCode": {
+        "AD": "广告图片",
+        "WRAP": "包装产品图片",
+        "REAL": "真实产品图片",
+        "WAYBILL_RECEIVE": "运单收到图片",
+        "OTHER": "其他图片"
+      },
+      "created": "使用标识符创建新的产品图像 {{ param }}",
+      "updated": "产品图片已更新并带有标识符 {{ param }}",
+      "deleted": "带有标识符的产品图片被删除 {{ param }}",
+      "delete": {
+        "question": "您确定要删除产品图片吗 {{ id }}？"
+      },
+      "detail": {
+        "title": "产品图片"
+      },
+      "id": "ID",
+      "code": "代码",
+      "len": "伦",
+      "createDate": "创建日期",
+      "type": "类型",
+      "base64": "基地 64",
+      "imageUrl": "图片的网址",
+      "order": "命令"
+    }
+  }
+}

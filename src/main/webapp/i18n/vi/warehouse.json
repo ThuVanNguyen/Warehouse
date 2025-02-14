@@ -1,0 +1,29 @@
+{
+  "wareHouseApp": {
+    "warehouse": {
+      "home": {
+        "title": "Kho hàng",
+        "refreshListLabel": "Làm mới danh sách",
+        "createLabel": "Tạo mới Kho hàng",
+        "createOrEditLabel": "Tạo hoặc chỉnh sửa Kho hàng",
+        "notFound": "Không tìm thấy Kho hàng"
+      },
+      "search": {
+        "placeHolder": "Tìm kiếm kho hàng..."
+      },
+      "created": "Một Kho hàng mới đã được tạo với mã định danh {{ param }}",
+      "updated": "Kho hàng đã được cập nhật với mã định danh {{ param }}",
+      "deleted": "Kho hàng đã bị xóa với mã định danh {{ param }}",
+      "delete": {
+        "question": "Bạn có chắc chắn muốn xóa Kho hàng {{ id }} không?"
+      },
+      "detail": {
+        "title": "Kho hàng"
+      },
+      "id": "Mã định danh",
+      "code": "Mã",
+      "name": "Tên",
+      "description": "Mô tả"
+    }
+  }
+}

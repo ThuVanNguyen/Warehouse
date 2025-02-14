@@ -1,0 +1,28 @@
+{
+  "wareHouseApp": {
+    "inlandLogistic": {
+      "home": {
+        "title": "Inland Logistics",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Inland Logistic",
+        "createOrEditLabel": "Create or edit a Inland Logistic",
+        "notFound": "No Inland Logistics found"
+      },
+      "search": {
+        "placeHolder": "Search Inland Logistics..."
+      },
+      "created": "A new Inland Logistic is created with identifier {{ param }}",
+      "updated": "A Inland Logistic is updated with identifier {{ param }}",
+      "deleted": "A Inland Logistic is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Inland Logistic {{ id }}?"
+      },
+      "detail": {
+        "title": "Inland Logistic"
+      },
+      "id": "Id",
+      "code": "Code",
+      "name": "Name"
+    }
+  }
+}

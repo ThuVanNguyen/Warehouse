@@ -1,0 +1,30 @@
+{
+  "wareHouseApp": {
+    "client": {
+      "home": {
+        "title": "Khách hàng",
+        "refreshListLabel": "Làm mới danh sách",
+        "createLabel": "Tạo mới Khách hàng",
+        "createOrEditLabel": "Tạo hoặc chỉnh sửa Khách hàng",
+        "notFound": "Không tìm thấy Khách hàng"
+      },
+      "search": {
+        "placeHolder": "Tìm kiếm theo mã, email, số điện thoại..."
+      },
+      "created": "Một Khách hàng mới đã được tạo với mã định danh {{ param }}",
+      "updated": "Khách hàng đã được cập nhật với mã định danh {{ param }}",
+      "deleted": "Khách hàng đã bị xóa với mã định danh {{ param }}",
+      "delete": {
+        "question": "Bạn có chắc chắn muốn xóa Khách hàng {{ id }} không?"
+      },
+      "detail": {
+        "title": "Chi tiết Khách hàng"
+      },
+      "id": "Mã định danh",
+      "code": "Mã",
+      "name": "Tên",
+      "email": "Email",
+      "phone": "Số điện thoại"
+    }
+  }
+}

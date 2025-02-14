@@ -1,0 +1,158 @@
+{
+  "global": {
+    "title": "仓库",
+    "browsehappy": "您正在使用 <strong>过时的</strong> 浏览器。 <a href=\"http://browsehappy.com/?locale=en\">升级您的浏览器</a> 改善您的体验。",
+    "menu": {
+      "home": "家",
+      "jhipster-needle-menu-add-element": "JHipster 将在此处添加额外的菜单条目（请勿翻译！）",
+      "entities": {
+        "main": "物流管理",
+        "adminAuthority": "管理员权限",
+        "jhipster-needle-menu-add-entry": "JHipster 将在此处添加其他实体（请勿翻译！）",
+        "client": "客户",
+        "inlandLogistic": "内陆物流",
+        "order": "命令",
+        "product": "产品",
+        "productImage": "产品图片",
+        "unit": "单元",
+        "warehouse": "仓库"
+      },
+      "account": {
+        "main": "帐户",
+        "settings": "设置",
+        "password": "密码",
+        "sessions": "会议",
+        "login": "登入",
+        "logout": "登出",
+        "register": "登记"
+      },
+      "admin": {
+        "main": "行政",
+        "userManagement": "用户管理",
+        "tracker": "用户追踪器",
+        "metrics": "指标",
+        "health": "健康",
+        "configuration": "配置",
+        "logs": "日志",
+        "apidocs": "应用程序编程接口",
+        "database": "数据库",
+        "jhipster-needle-menu-add-admin-element": "JHipster 将在此处添加额外的菜单条目（请勿翻译！）"
+      },
+      "language": "语言"
+    },
+    "form": {
+      "username.label": "用户名",
+      "username.placeholder": "您的用户名",
+      "currentpassword.label": "当前密码",
+      "currentpassword.placeholder": "当前密码",
+      "newpassword.label": "新密码",
+      "newpassword.placeholder": "新密码",
+      "confirmpassword.label": "新密码确认",
+      "confirmpassword.placeholder": "确认新密码",
+      "email.label": "电子邮件",
+      "email.placeholder": "您的电子邮件"
+    },
+    "messages": {
+      "info": {
+        "authenticated": {
+          "prefix": "请 ",
+          "link": "登入",
+          "suffix": "，您可以尝试使用默认帐户：<br/>- 管理员（登录名=“admin”，密码=“admin”） <br/>- 用户（登录名=“用户”，密码=“用户”）。"
+        },
+        "register": {
+          "noaccount": "您还没有帐户？",
+          "link": "注册新帐户"
+        }
+      },
+      "error": {
+        "dontmatch": "密码和确认信息不匹配！"
+      },
+      "validate": {
+        "newpassword": {
+          "required": "需要您的密码。",
+          "minlength": "您的密码必须至少包含 4 个字符。",
+          "maxlength": "您的密码不能超过 50 个字符。",
+          "strength": "密码强度："
+        },
+        "confirmpassword": {
+          "required": "需要您的确认密码。",
+          "minlength": "您的确认密码必须至少为 4 个字符。",
+          "maxlength": "您的确认密码不能超过 50 个字符。"
+        },
+        "email": {
+          "required": "您的电子邮件是必需的。",
+          "invalid": "您的电子邮件无效。",
+          "minlength": "您的电子邮件必须至少包含 5 个字符。",
+          "maxlength": "您的电子邮件不能超过 50 个字符。"
+        }
+      }
+    },
+    "field": {
+      "id": "ID"
+    },
+    "ribbon": {
+      "dev": "发展"
+    },
+    "item-count": "显示中 {{first}} - {{second}} 的 {{total}} 项目。"
+  },
+  "entity": {
+    "action": {
+      "addblob": "添加斑点",
+      "addimage": "添加图片",
+      "back": "后退",
+      "cancel": "取消",
+      "import": "进口",
+      "export": "出口",
+      "Upload": "上传",
+      "delete": "删除",
+      "edit": "编辑",
+      "open": "打开",
+      "save": "节省",
+      "view": "看法",
+      "show": "展示 {{otherEntity}}"
+    },
+    "detail": {
+      "field": "场地",
+      "value": "价值"
+    },
+    "delete": {
+      "title": "确认删除操作"
+    },
+    "validation": {
+      "required": "此字段是必需的。",
+      "minlength": "该字段至少需要 {{ min }} 人物。",
+      "maxlength": "该字段不能长于 {{ max }} 人物。",
+      "min": "该字段至少应为 {{ min }}。",
+      "max": "该字段不能超过 {{ max }}。",
+      "minbytes": "该字段至少应为 {{ min }} 字节。",
+      "maxbytes": "该字段不能超过 {{ max }} 字节。",
+      "pattern": "该字段应遵循以下模式 {{ pattern }}。",
+      "number": "该字段应该是一个数字。",
+      "datetimelocal": "该字段应该是日期和时间。",
+      "patternLogin": "该字段只能包含字母、数字和电子邮件地址。"
+    },
+    "filters": {
+      "set": "设置以下过滤器",
+      "clear": "清除过滤器",
+      "clearAll": "清除所有过滤器"
+    }
+  },
+  "error": {
+    "internalServerError": "服务器内部错误",
+    "server.not.reachable": "服务器无法访问",
+    "url.not.found": "未找到",
+    "NotNull": "场地 {{ fieldName }} 不能为空！",
+    "Size": "场地 {{ fieldName }} 不满足最小/最大尺寸要求！",
+    "userexists": "登录名已被使用！",
+    "emailexists": "电子邮件已被使用！",
+    "idexists": "一个新的 {{ entityName }} 不能已有 ID",
+    "idnull": "身份证件无效",
+    "idinvalid": "无效的身份证件",
+    "idnotfound": "找不到身份证",
+    "file": {
+      "could.not.extract": "无法提取文件",
+      "not.image": "文件原本应该是图像，但发现是“{{ fileType }}”"
+    }
+  },
+  "footer": "这是您的页脚"
+}

@@ -1,0 +1,75 @@
+<!-- Modal Header -->
+<div class="modal-header">
+  <h4 class="modal-title" data-cy="fileUploadDialogHeading" jhiTranslate="wareHouseApp.order.import.title">Upload Excel File</h4>
+</div>
+
+<div class="modal-body">
+  <div>
+    <form name="fileUploadForm" (ngSubmit)="uploadFile()">
+      <jhi-alert></jhi-alert>
+      <jhi-alert-error></jhi-alert-error>
+      <!-- File Input -->
+      <label for="fileInput" class="form-label" jhiTranslate="wareHouseApp.order.import.importDesc"
+        >Please select the Excel file you want to upload.</label
+      >
+      <input id="fileInput" type="file" accept=".xlsx, .xls" class="form-control" (change)="onFileSelected($event)" data-cy="fileInput" />
+      <small class="text-muted" jhiTranslate="wareHouseApp.order.import.inputTip">Only .xlsx and .xls files are allowed.</small>
+    </form>
+  </div>
+
+  <div class="status-select mt-2">
+    <label for="statusSelect" class="form-label" jhiTranslate="wareHouseApp.order.status">Status</label>
+    <select id="statusSelect" class="form-control" [(ngModel)]="selectedStatusIndex">
+      @for (status of orderStatuses; track $index) {
+        <option [ngValue]="$index">
+          {{ 'wareHouseApp.order.statusEnum.' + status | translate }}
+        </option>
+      }
+    </select>
+  </div>
+
+  @if (orderStatuses[selectedStatusIndex] !== 'BANG_TUONG_WARE_HOUSE') {
+    <div class="mt-2">
+      <label for="transportVehicle" class="form-label" jhiTranslate="wareHouseApp.order.import.transportVehicle"> Transport Vehicle </label>
+      <input id="transportVehicle" type="text" class="form-control" data-cy="transportVehicle" [(ngModel)]="transportVehicle" />
+    </div>
+
+    <div class="mt-2">
+      <label for="transportVehicleDate" class="form-label" jhiTranslate="wareHouseApp.order.import.transportVehicleDate">
+        Transport Vehicle Date
+      </label>
+      <div class="input-group">
+        <input
+          id="transportVehicleDate"
+          data-cy="transportVehicleDate"
+          type="text"
+          class="form-control"
+          ngbDatepicker
+          [(ngModel)]="transportVehicleDate"
+          #transportVehicleDateDp="ngbDatepicker"
+        />
+        <button type="button" class="btn btn-secondary" (click)="transportVehicleDateDp.toggle()">
+          <fa-icon icon="calendar-alt"></fa-icon>
+        </button>
+      </div>
+    </div>
+  }
+</div>
+
+<!-- Modal Footer -->
+<div class="modal-footer">
+  <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="cancel()">
+    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+  </button>
+
+  <button
+    id="jhi-confirm-upload-file"
+    data-cy="entityConfirmUploadButton"
+    type="submit"
+    class="btn btn-primary"
+    [disabled]="!selectedFile"
+    (click)="uploadFile()"
+  >
+    <fa-icon icon="times"></fa-icon>&nbsp;<span jhiTranslate="entity.action.import">Import</span>
+  </button>
+</div>

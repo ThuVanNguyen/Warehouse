@@ -1,0 +1,15 @@
+{
+  "sessions": {
+    "title": "[<strong>{{username}}</strong>] 的活动会话",
+    "table": {
+      "ipaddress": "IP 地址",
+      "useragent": "浏览器",
+      "date": "日期",
+      "button": "终止会话"
+    },
+    "messages": {
+      "success": "<strong>会话已成功终止！</strong>",
+      "error": "<strong>发生错误！</strong> 无法终止会话。"
+    }
+  }
+}

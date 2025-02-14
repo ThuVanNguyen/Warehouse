@@ -1,0 +1,30 @@
+{
+  "wareHouseApp": {
+    "client": {
+      "home": {
+        "title": "客户",
+        "refreshListLabel": "刷新列表",
+        "createLabel": "创建新客户",
+        "createOrEditLabel": "创建或编辑客户",
+        "notFound": "未找到客户"
+      },
+      "search": {
+        "placeHolder": "通过代码、电子邮件、电话号码搜索..."
+      },
+      "created": "新客户已创建，标识符为 {{ param }}",
+      "updated": "客户已更新，标识符为 {{ param }}",
+      "deleted": "客户已删除，标识符为 {{ param }}",
+      "delete": {
+        "question": "您确定要删除客户 {{ id }} 吗？"
+      },
+      "detail": {
+        "title": "客户"
+      },
+      "id": "标识符",
+      "code": "代码",
+      "name": "名称",
+      "email": "电子邮件",
+      "phone": "电话"
+    }
+  }
+}

@@ -1,0 +1,101 @@
+{
+  "annotations": {
+    "changelogDate": "20241213111431"
+  },
+  "applications": "*",
+  "dto": "mapstruct",
+  "entityTableName": "jhi_order",
+  "fields": [
+    {
+      "fieldName": "id",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "receiptDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "warehouseReceiptCode",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "warehouseReceiveNote",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "piecesReceivedCount",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "piecesLoadedCount",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "totalWeight",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "totalCubicMeter",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "extraFee",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "inlandFee",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "extraFeeDetail",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "waybill",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "note",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "warehouse",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "inlandLogistic",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "productCn",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "productVn",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "unit",
+      "fieldType": "String"
+    }
+  ],
+  "name": "Order",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityField": "code",
+      "otherEntityName": "productImage",
+      "relationshipName": "productImages",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "client",
+      "relationshipName": "client",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceClass"
+}

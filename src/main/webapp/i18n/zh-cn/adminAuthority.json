@@ -1,0 +1,23 @@
+{
+  "wareHouseApp": {
+    "adminAuthority": {
+      "home": {
+        "title": "权限",
+        "refreshListLabel": "刷新列表",
+        "createLabel": "创建新权限",
+        "createOrEditLabel": "创建或编辑权限",
+        "notFound": "未找到权限"
+      },
+      "created": "新权限已创建，标识符为 {{ param }}",
+      "updated": "权限已更新，标识符为 {{ param }}",
+      "deleted": "权限已删除，标识符为 {{ param }}",
+      "delete": {
+        "question": "您确定要删除权限 {{ id }} 吗？"
+      },
+      "detail": {
+        "title": "权限"
+      },
+      "name": "名称"
+    }
+  }
+}

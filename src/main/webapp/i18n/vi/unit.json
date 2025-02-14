@@ -1,0 +1,27 @@
+{
+  "wareHouseApp": {
+    "unit": {
+      "home": {
+        "title": "Đơn vị",
+        "refreshListLabel": "Làm mới danh sách",
+        "createLabel": "Tạo mới Đơn vị",
+        "createOrEditLabel": "Tạo hoặc chỉnh sửa Đơn vị",
+        "notFound": "Không tìm thấy Đơn vị"
+      },
+      "search": {
+        "placeHolder": "Tìm kiếm đơn vị..."
+      },
+      "created": "Một Đơn vị mới đã được tạo với mã định danh {{ param }}",
+      "updated": "Đơn vị đã được cập nhật với mã định danh {{ param }}",
+      "deleted": "Đơn vị đã bị xóa với mã định danh {{ param }}",
+      "delete": {
+        "question": "Bạn có chắc chắn muốn xóa Đơn vị {{ id }} không?"
+      },
+      "detail": {
+        "title": "Đơn vị"
+      },
+      "id": "Mã định danh",
+      "code": "Mã"
+    }
+  }
+}

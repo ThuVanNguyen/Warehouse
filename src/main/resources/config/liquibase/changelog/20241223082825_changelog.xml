@@ -1,0 +1,64 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <changeSet author="phanquan (generated)" id="1734942516038-6">
+        <dropForeignKeyConstraint baseTableName="jhi_order" constraintName="fk_jhi_order__inland_logistic_id"/>
+    </changeSet>
+    <changeSet author="phanquan (generated)" id="1734942516038-7">
+        <dropForeignKeyConstraint baseTableName="jhi_order" constraintName="fk_jhi_order__product_id"/>
+    </changeSet>
+    <changeSet author="phanquan (generated)" id="1734942516038-8">
+        <dropForeignKeyConstraint baseTableName="jhi_order" constraintName="fk_jhi_order__unit_id"/>
+    </changeSet>
+    <changeSet author="phanquan (generated)" id="1734942516038-9">
+        <dropForeignKeyConstraint baseTableName="jhi_order" constraintName="fk_jhi_order__warehouse_id"/>
+    </changeSet>
+    <changeSet author="phanquan (generated)" id="1734942516038-1">
+        <addColumn tableName="jhi_order">
+            <column name="inland_logistic" type="varchar(255)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="phanquan (generated)" id="1734942516038-2">
+        <addColumn tableName="jhi_order">
+            <column name="product_cn" type="varchar(255)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="phanquan (generated)" id="1734942516038-3">
+        <addColumn tableName="jhi_order">
+            <column name="product_vn" type="varchar(255)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="phanquan (generated)" id="1734942516038-4">
+        <addColumn tableName="jhi_order">
+            <column name="unit" type="varchar(255)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="phanquan (generated)" id="1734942516038-5">
+        <addColumn tableName="jhi_order">
+            <column name="warehouse" type="varchar(255)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="phanquan (generated)" id="1734942516038-10">
+        <dropTable tableName="inland_logistic"/>
+    </changeSet>
+    <changeSet author="phanquan (generated)" id="1734942516038-11">
+        <dropTable tableName="product"/>
+    </changeSet>
+    <changeSet author="phanquan (generated)" id="1734942516038-12">
+        <dropTable tableName="unit"/>
+    </changeSet>
+    <changeSet author="phanquan (generated)" id="1734942516038-13">
+        <dropTable tableName="warehouse"/>
+    </changeSet>
+    <changeSet author="phanquan (generated)" id="1734942516038-14">
+        <dropColumn columnName="inland_logistic_id" tableName="jhi_order"/>
+    </changeSet>
+    <changeSet author="phanquan (generated)" id="1734942516038-15">
+        <dropColumn columnName="product_id" tableName="jhi_order"/>
+    </changeSet>
+    <changeSet author="phanquan (generated)" id="1734942516038-16">
+        <dropColumn columnName="unit_id" tableName="jhi_order"/>
+    </changeSet>
+    <changeSet author="phanquan (generated)" id="1734942516038-17">
+        <dropColumn columnName="warehouse_id" tableName="jhi_order"/>
+    </changeSet>
+</databaseChangeLog>

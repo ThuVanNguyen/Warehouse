@@ -1,0 +1,164 @@
+<div>
+  <h2 id="page-heading" data-cy="ClientHeading">
+    <span style="font-weight: 600" jhiTranslate="wareHouseApp.client.home.title">Clients</span>
+  </h2>
+
+  <div class="option-group d-flex justify-content-end mb-2">
+    <div class="input-group search-input me-2">
+      <input
+        type="text"
+        class="form-control"
+        style="width: 500px"
+        placeholder="{{ 'wareHouseApp.client.search.placeHolder' | translate }}"
+        (keyup)="onSearchKeyUp($event)"
+        data-cy="searchInput"
+      />
+    </div>
+
+    <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+      <fa-icon icon="sync" [animation]="isLoading ? 'spin' : undefined"></fa-icon>
+      <span jhiTranslate="wareHouseApp.client.home.refreshListLabel">Refresh list</span>
+    </button>
+
+    @if (account()?.authorities?.includes(Authority.ADMIN) || account()?.authorities?.includes(Authority.EDITOR)) {
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-client"
+        [routerLink]="['/client/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="wareHouseApp.client.home.createLabel">Create a new Client</span>
+      </button>
+    }
+  </div>
+</div>
+
+<div>
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  @if (clients?.length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="wareHouseApp.client.home.notFound">No Clients found</span>
+    </div>
+  }
+
+  @if (clients && clients.length > 0) {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [sortState]="sortState" (sortChange)="navigateToWithComponentValues($event)">
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span jhiTranslate="wareHouseApp.client.id">Id</span>
+
+                <fa-icon class="p-1 fa-2xs" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="code">
+              <div class="d-flex">
+                <span jhiTranslate="wareHouseApp.client.code">Code</span>
+
+                <fa-icon class="p-1 fa-2xs" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="name">
+              <div class="d-flex">
+                <span jhiTranslate="wareHouseApp.client.name">Name</span>
+
+                <fa-icon class="p-1 fa-2xs" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="email">
+              <div class="d-flex">
+                <span jhiTranslate="wareHouseApp.client.email">Email</span>
+
+                <fa-icon class="p-1 fa-2xs" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="phone">
+              <div class="d-flex">
+                <span jhiTranslate="wareHouseApp.client.phone">Phone</span>
+
+                <fa-icon class="p-1 fa-2xs" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (client of clients; track trackId(client)) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/client', client.id, 'view']">{{ client.id }}</a>
+              </td>
+              <td>{{ client.code }}</td>
+              <td>{{ client.name }}</td>
+              <td>{{ client.email }}</td>
+              <td>{{ client.phone }}</td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a [routerLink]="['/client', client.id, 'view']" class="btn btn-sm" data-cy="entityDetailsButton">
+                    <fa-icon icon="eye" style="color: dodgerblue"></fa-icon>
+                    <!--                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>-->
+                  </a>
+
+                  @if (account()?.authorities?.includes(Authority.ADMIN) || account()?.authorities?.includes(Authority.EDITOR)) {
+                    <a [routerLink]="['/client', client.id, 'edit']" class="btn btn-sm" data-cy="entityEditButton">
+                      <fa-icon icon="pencil-alt" style="color: forestgreen"></fa-icon>
+                      <!--                      <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>-->
+                    </a>
+
+                    <button type="submit" (click)="delete(client)" class="btn btn-sm" data-cy="entityDeleteButton">
+                      <fa-icon icon="trash-can" style="color: red"></fa-icon>
+                      <!--                      <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>-->
+                    </button>
+                  }
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+</div>
+
+<div class="page-footer">
+  @if (clients && clients.length > 0) {
+    <div class="d-flex justify-content-between align-items-center pt-3">
+      <div class="d-flex justify-content-center">
+        <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+      </div>
+
+      <div class="d-flex gap-2">
+        <label for="itemsPerPage" class="mt-2">{{ 'wareHouseApp.order.label.itemPerPage' | translate }}:</label>
+        <select
+          id="itemsPerPage"
+          class="form-select"
+          style="width: auto; height: min-content"
+          [ngModel]="itemsPerPage"
+          (ngModelChange)="updateItemsPerPage($event)"
+        >
+          @for (option of itemsPerPageOptions; track $index) {
+            <option [value]="option">{{ option }}</option>
+          }
+        </select>
+
+        <div class="d-flex justify-content-center">
+          <ngb-pagination
+            [collectionSize]="totalItems"
+            [page]="page"
+            [pageSize]="itemsPerPage"
+            [maxSize]="5"
+            [rotate]="true"
+            [boundaryLinks]="true"
+            (pageChange)="navigateToPage($event)"
+          ></ngb-pagination>
+        </div>
+      </div>
+    </div>
+  }
+</div>

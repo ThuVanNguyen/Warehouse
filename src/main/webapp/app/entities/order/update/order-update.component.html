@@ -1,0 +1,444 @@
+<div style="position: sticky; top: 0; background-color: white; z-index: 10">
+  <div style="display: flex; align-items: center; padding: 10px 0">
+    <div></div>
+  </div>
+</div>
+
+<div class="d-flex justify-content-center mt-2">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-order-heading"
+        class="mb-2"
+        style="font-weight: 600"
+        data-cy="OrderCreateUpdateHeading"
+        jhiTranslate="wareHouseApp.order.home.createOrEditLabel"
+      >
+        Create or edit a Order
+      </h2>
+
+      <jhi-alert-error></jhi-alert-error>
+
+      @if (editForm.controls.id.value !== null) {
+        <div class="mb-3">
+          <label class="form-label" for="field_id" jhiTranslate="wareHouseApp.order.code">Id</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+      }
+
+      <div class="mb-3">
+        <label class="form-label" for="field_warehouseReceiptCode" jhiTranslate="wareHouseApp.order.warehouseReceiptCode"
+          >Warehouse Receipt Code</label
+        >
+        <input
+          type="text"
+          class="form-control"
+          name="warehouseReceiptCode"
+          id="field_warehouseReceiptCode"
+          data-cy="warehouseReceiptCode"
+          formControlName="warehouseReceiptCode"
+        />
+
+        @let warehouseReceiptCodeRef = editForm.get('warehouseReceiptCode')!;
+        @if (warehouseReceiptCodeRef.invalid && (warehouseReceiptCodeRef.dirty || warehouseReceiptCodeRef.touched)) {
+          @if (warehouseReceiptCodeRef?.errors?.required) {
+            <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+          }
+        }
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="field_waybill" jhiTranslate="wareHouseApp.order.waybill">Waybill</label>
+        <input type="text" class="form-control" name="waybill" id="field_waybill" data-cy="waybill" formControlName="waybill" />
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="field_client" jhiTranslate="wareHouseApp.order.client">Client</label>
+        <div class="input-group">
+          <select
+            class="form-control"
+            id="field_client"
+            data-cy="client"
+            name="client"
+            formControlName="client"
+            [compareWith]="compareClient"
+          >
+            <option [ngValue]="null"></option>
+            @for (clientOption of clientsSharedCollection; track $index) {
+              <option [ngValue]="clientOption">{{ clientOption.id }} - {{ clientOption.code }}</option>
+            }
+          </select>
+          <button type="button" class="btn btn-secondary" (click)="addNewClient()">
+            <fa-icon icon="plus"></fa-icon>
+          </button>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="field_status" jhiTranslate="wareHouseApp.order.status">Status</label>
+        <select class="form-control" id="field_status" data-cy="status" name="status" formControlName="status">
+          <option [ngValue]="null"></option>
+          @for (status of orderStatuses; track $index) {
+            <option [ngValue]="status">{{ 'wareHouseApp.order.statusEnum.' + status | translate }}</option>
+          }
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="field_productCn" jhiTranslate="wareHouseApp.order.productCn">Product in Chiness</label>
+        <input type="text" class="form-control" name="productCn" id="field_productCn" data-cy="productCn" formControlName="productCn" />
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="field_productVn" jhiTranslate="wareHouseApp.order.productVn">Product in Vietnamese</label>
+        <input type="text" class="form-control" name="productVn" id="field_productVn" data-cy="productVn" formControlName="productVn" />
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="field_piecesReceivedCount" jhiTranslate="wareHouseApp.order.piecesReceivedCount"
+          >Pieces Received Count</label
+        >
+        <input
+          type="number"
+          class="form-control"
+          name="piecesReceivedCount"
+          id="field_piecesReceivedCount"
+          data-cy="piecesReceivedCount"
+          formControlName="piecesReceivedCount"
+        />
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="field_piecesWareHouseCount" jhiTranslate="wareHouseApp.order.piecesWareHouseCount"
+          >Pieces Warehouse Count</label
+        >
+        <input
+          type="number"
+          class="form-control"
+          name="piecesWareHouseCount"
+          id="field_piecesWareHouseCount"
+          data-cy="piecesWareHouseCount"
+          formControlName="piecesWareHouseCount"
+        />
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="field_totalWeight" jhiTranslate="wareHouseApp.order.totalWeight">Total Weight</label>
+        <input
+          type="number"
+          class="form-control"
+          name="totalWeight"
+          id="field_totalWeight"
+          data-cy="totalWeight"
+          formControlName="totalWeight"
+        />
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="field_totalCubicMeter" jhiTranslate="wareHouseApp.order.totalCubicMeter">Total Cubic Meter</label>
+        <input
+          type="number"
+          class="form-control"
+          name="totalCubicMeter"
+          id="field_totalCubicMeter"
+          data-cy="totalCubicMeter"
+          formControlName="totalCubicMeter"
+        />
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="field_listCalculation" jhiTranslate="wareHouseApp.order.listCalculation">List Calculation</label>
+        <input
+          type="number"
+          class="form-control"
+          name="listCalculation"
+          id="field_listCalculation"
+          data-cy="listCalculation"
+          formControlName="listCalculation"
+        />
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="field_unitPriceWeight" jhiTranslate="wareHouseApp.order.unitPriceWeight">Unit Price Weight</label>
+        <input
+          type="number"
+          class="form-control"
+          name="unitPriceWeight"
+          id="field_unitPriceWeight"
+          data-cy="unitPriceWeight"
+          formControlName="unitPriceWeight"
+        />
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="field_unitPriceCubicMeter" jhiTranslate="wareHouseApp.order.unitPriceCubicMeter"
+          >Unit Price Cubic Meter</label
+        >
+        <input
+          type="text"
+          class="form-control"
+          name="unitPriceCubicMeter"
+          id="field_unitPriceCubicMeter"
+          data-cy="unitPriceCubicMeter"
+          formControlName="unitPriceCubicMeter"
+        />
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="field_totalPrice" jhiTranslate="wareHouseApp.order.totalPrice">Total Price</label>
+        <input type="text" class="form-control" name="totalPrice" id="field_totalPrice" data-cy="totalPrice" formControlName="totalPrice" />
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="field_receiptDate" jhiTranslate="wareHouseApp.order.bangTuongWareHouseDate"
+          >Bang Tuong WareHouse Date</label
+        >
+        <div class="input-group">
+          <input
+            id="field_receiptDate"
+            data-cy="receiptDate"
+            type="text"
+            class="form-control"
+            name="receiptDate"
+            ngbDatepicker
+            #receiptDateDp="ngbDatepicker"
+            formControlName="receiptDate"
+          />
+          <button type="button" class="btn btn-secondary" (click)="receiptDateDp.toggle()">
+            <fa-icon icon="calendar-alt"></fa-icon>
+          </button>
+        </div>
+
+        @let receiptDateRef = editForm.get('receiptDate')!;
+        @if (receiptDateRef.invalid && (receiptDateRef.dirty || receiptDateRef.touched)) {
+          @if (receiptDateRef?.errors?.required) {
+            <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+          }
+        }
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="field_loadedOnVehicleDate" jhiTranslate="wareHouseApp.order.loadedOnVehicleDate"
+          >Load On Vehicle Date</label
+        >
+        <div class="input-group">
+          <input
+            id="field_loadedOnVehicleDate"
+            data-cy="loadedOnVehicleDate"
+            type="text"
+            class="form-control"
+            name="loadedOnVehicleDate"
+            ngbDatepicker
+            #loadedOnVehicleDateDp="ngbDatepicker"
+            formControlName="loadedOnVehicleDate"
+          />
+          <button type="button" class="btn btn-secondary" (click)="loadedOnVehicleDateDp.toggle()">
+            <fa-icon icon="calendar-alt"></fa-icon>
+          </button>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="field_arrivedAtHNDate" jhiTranslate="wareHouseApp.order.arrivedAtHNDate"
+          >Arrived at Hanoi Date</label
+        >
+        <div class="input-group">
+          <input
+            id="field_arrivedAtHNDate"
+            data-cy="arrivedAtHNDate"
+            type="text"
+            class="form-control"
+            name="arrivedAtHNDate"
+            ngbDatepicker
+            #arrivedAtHNDateDp="ngbDatepicker"
+            formControlName="arrivedAtHNDate"
+          />
+          <button type="button" class="btn btn-secondary" (click)="arrivedAtHNDateDp.toggle()">
+            <fa-icon icon="calendar-alt"></fa-icon>
+          </button>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="field_deliveredDate" jhiTranslate="wareHouseApp.order.deliveredDate">Delivered Date</label>
+        <div class="input-group">
+          <input
+            id="field_deliveredDate"
+            data-cy="deliveredDate"
+            type="text"
+            class="form-control"
+            name="deliveredDate"
+            ngbDatepicker
+            #deliveredDateDp="ngbDatepicker"
+            formControlName="deliveredDate"
+          />
+          <button type="button" class="btn btn-secondary" (click)="deliveredDateDp.toggle()">
+            <fa-icon icon="calendar-alt"></fa-icon>
+          </button>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="field_customerSignedDate" jhiTranslate="wareHouseApp.order.customerSignedDate"
+          >Customer Signed Date</label
+        >
+        <div class="input-group">
+          <input
+            id="field_customerSignedDate"
+            data-cy="customerSignedDate"
+            type="text"
+            class="form-control"
+            name="customerSignedDate"
+            ngbDatepicker
+            #customerSignedDateDp="ngbDatepicker"
+            formControlName="customerSignedDate"
+          />
+          <button type="button" class="btn btn-secondary" (click)="customerSignedDateDp.toggle()">
+            <fa-icon icon="calendar-alt"></fa-icon>
+          </button>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="field_cancelDate" jhiTranslate="wareHouseApp.order.cancelDate">Cancel Date</label>
+        <div class="input-group">
+          <input
+            id="field_cancelDate"
+            data-cy="cancelDate"
+            type="text"
+            class="form-control"
+            name="cancelDate"
+            ngbDatepicker
+            #cancelDateDp="ngbDatepicker"
+            formControlName="cancelDate"
+          />
+          <button type="button" class="btn btn-secondary" (click)="cancelDateDp.toggle()">
+            <fa-icon icon="calendar-alt"></fa-icon>
+          </button>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="field_note" jhiTranslate="wareHouseApp.order.note">Note</label>
+        <input type="text" class="form-control" name="note" id="field_note" data-cy="note" formControlName="note" />
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="field_shippingAddressAndPhone" jhiTranslate="wareHouseApp.order.shippingAddressAndPhone"
+          >Shipping Address and Phone number</label
+        >
+        <input
+          type="text"
+          class="form-control"
+          name="shippingAddressAndPhone"
+          id="field_shippingAddressAndPhone"
+          data-cy="shippingAddressAndPhone"
+          formControlName="shippingAddressAndPhone"
+        />
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="field_importVehicleNumber" jhiTranslate="wareHouseApp.order.importVehicleNumber"
+          >Import Vehicle Number</label
+        >
+        <input
+          type="text"
+          class="form-control"
+          name="importVehicleNumber"
+          id="field_importVehicleNumber"
+          data-cy="importVehicleNumber"
+          formControlName="importVehicleNumber"
+        />
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="field_arrangeVehicle" jhiTranslate="wareHouseApp.order.arrangeVehicle">Arrange Vehicle</label>
+        <input
+          type="text"
+          class="form-control"
+          name="arrangeVehicle"
+          id="field_arrangeVehicle"
+          data-cy="arrangeVehicle"
+          formControlName="arrangeVehicle"
+        />
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="field_exportVehicleNumber" jhiTranslate="wareHouseApp.order.exportVehicleNumber"
+          >Export Vehicle Number</label
+        >
+        <input
+          type="text"
+          class="form-control"
+          name="exportVehicleNumber"
+          id="field_exportVehicleNumber"
+          data-cy="exportVehicleNumber"
+          formControlName="exportVehicleNumber"
+        />
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="field_exportDate" jhiTranslate="wareHouseApp.order.exportDate">Export Date</label>
+        <div class="input-group">
+          <input
+            id="field_exportDate"
+            data-cy="exportDate"
+            type="text"
+            class="form-control"
+            name="exportDate"
+            ngbDatepicker
+            #exportDateDp="ngbDatepicker"
+            formControlName="exportDate"
+          />
+          <button type="button" class="btn btn-secondary" (click)="exportDateDp.toggle()">
+            <fa-icon icon="calendar-alt"></fa-icon>
+          </button>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="field_exportQuantity" jhiTranslate="wareHouseApp.order.exportQuantity">Export Quantity</label>
+        <input
+          type="text"
+          class="form-control"
+          name="exportQuantity"
+          id="field_exportQuantity"
+          data-cy="exportQuantity"
+          formControlName="exportQuantity"
+        />
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="field_productImage" jhiTranslate="wareHouseApp.order.productImages">Product Image</label>
+        <div class="input-group">
+          <select class="form-control" id="field_productImage" data-cy="productImage" name="productImage">
+            <option [ngValue]="null"></option>
+            @for (productImageOption of productIamgesSharedCollection; track $index) {
+              <option [ngValue]="productImageOption">{{ productImageOption.id }}</option>
+            }
+          </select>
+
+          <button type="button" class="btn btn-secondary">
+            <fa-icon icon="plus"></fa-icon>
+          </button>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

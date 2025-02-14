@@ -1,0 +1,29 @@
+{
+  "wareHouseApp": {
+    "warehouse": {
+      "home": {
+        "title": "仓库",
+        "refreshListLabel": "刷新列表",
+        "createLabel": "新建仓库",
+        "createOrEditLabel": "新建或编辑仓库",
+        "notFound": "未找到仓库"
+      },
+      "search": {
+        "placeHolder": "搜索仓库..."
+      },
+      "created": "一个新的仓库已创建，标识符为 {{ param }}",
+      "updated": "仓库已更新，标识符为 {{ param }}",
+      "deleted": "仓库已删除，标识符为 {{ param }}",
+      "delete": {
+        "question": "您确定要删除仓库 {{ id }} 吗？"
+      },
+      "detail": {
+        "title": "仓库详情"
+      },
+      "id": "标识符",
+      "code": "代码",
+      "name": "名称",
+      "description": "描述"
+    }
+  }
+}

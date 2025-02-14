@@ -1,0 +1,33 @@
+{
+  "health": {
+    "title": "Kiểm tra sức khỏe",
+    "refresh.button": "Làm mới",
+    "stacktrace": "Dấu vết ngăn xếp",
+    "details": {
+      "details": "Chi tiết",
+      "properties": "Thuộc tính",
+      "name": "Tên",
+      "value": "Giá trị",
+      "error": "Lỗi"
+    },
+    "indicator": {
+      "binders": "Trình kết nối tin nhắn",
+      "diskSpace": "Dung lượng ổ đĩa",
+      "mail": "Email",
+      "livenessState": "Trạng thái hoạt động",
+      "readinessState": "Trạng thái sẵn sàng",
+      "ping": "Ứng dụng",
+      "db": "Cơ sở dữ liệu"
+    },
+    "table": {
+      "service": "Tên dịch vụ",
+      "status": "Trạng thái"
+    },
+    "status": {
+      "UNKNOWN": "KHÔNG XÁC ĐỊNH",
+      "UP": "HOẠT ĐỘNG",
+      "OUT_OF_SERVICE": "NGỪNG DỊCH VỤ",
+      "DOWN": "KHÔNG HOẠT ĐỘNG"
+    }
+  }
+}

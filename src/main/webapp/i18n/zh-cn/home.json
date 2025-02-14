@@ -1,0 +1,19 @@
+{
+  "home": {
+    "title": "欢迎",
+    "subtitle": "这是您的主页",
+    "logged": {
+      "message": "您以用户身份登录“{{username}}”。"
+    },
+    "question": "如果您对 JHipster 有任何疑问：",
+    "link": {
+      "homepage": "JHipster 主页",
+      "stackoverflow": "Stack Overflow 上的 JHipster",
+      "bugtracker": "JHipster 错误跟踪器",
+      "chat": "JHipster公共聊天室",
+      "follow": "在 Twitter 上关注@jhipster"
+    },
+    "like": "如果你喜欢 JHipster，别忘了给我们一颗星",
+    "github": "GitHub"
+  }
+}

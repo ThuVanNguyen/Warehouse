@@ -1,0 +1,27 @@
+{
+  "wareHouseApp": {
+    "unit": {
+      "home": {
+        "title": "单位",
+        "refreshListLabel": "刷新列表",
+        "createLabel": "新建单位",
+        "createOrEditLabel": "新建或编辑单位",
+        "notFound": "未找到单位"
+      },
+      "search": {
+        "placeHolder": "搜索单位..."
+      },
+      "created": "一个新的单位已创建，标识符为 {{ param }}",
+      "updated": "单位已更新，标识符为 {{ param }}",
+      "deleted": "单位已删除，标识符为 {{ param }}",
+      "delete": {
+        "question": "您确定要删除单位 {{ id }} 吗？"
+      },
+      "detail": {
+        "title": "单位详情"
+      },
+      "id": "标识符",
+      "code": "代码"
+    }
+  }
+}

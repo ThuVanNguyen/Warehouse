@@ -1,0 +1,48 @@
+{
+  "wareHouseApp": {
+    "productImage": {
+      "home": {
+        "title": "Product Images",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Product Image",
+        "createOrEditLabel": "Create or edit a Product Image",
+        "notFound": "No Product Images found"
+      },
+      "search": {
+        "placeHolder": "Search Product Images..."
+      },
+      "convert": {
+        "title": "Upload Image",
+        "convertDesc": "Please select the Image you want to upload.",
+        "inputTip": "Only image files are allowed."
+      },
+      "typeCode": {
+        "AD": "Advetise image",
+        "WRAP": "Wrapped product image",
+        "REAL": "Real product image",
+        "WAYBILL_RECEIVE": "waybill received image",
+        "OTHER": "Other image"
+      },
+      "created": "A new Product Image is created with identifier {{ param }}",
+      "updated": "A Product Image is updated with identifier {{ param }}",
+      "deleted": "A Product Image is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Product Image {{ id }}?"
+      },
+      "detail": {
+        "title": "Product Image"
+      },
+      "error": {
+        "imageTooLarge": "File size is too large, maximum 10MB!"
+      },
+      "id": "Id",
+      "code": "Code",
+      "len": "Len",
+      "createDate": "Create Date",
+      "type": "Type",
+      "base64": "Base 64",
+      "imageUrl": "Image's url",
+      "order": "Order"
+    }
+  }
+}

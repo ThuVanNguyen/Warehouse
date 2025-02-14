@@ -1,0 +1,117 @@
+{
+  "wareHouseApp": {
+    "order": {
+      "home": {
+        "title": "Đơn hàng",
+        "refreshListLabel": "Làm mới danh sách",
+        "createLabel": "Tạo mới Đơn hàng",
+        "createOrEditLabel": "Tạo hoặc chỉnh sửa Đơn hàng",
+        "notFound": "Không tìm thấy Đơn hàng"
+      },
+      "search": {
+        "placeHolder": "Tìm kiếm đơn hàng theo mã vận đơn..."
+      },
+      "label": {
+        "warehouseReceiptCode": "Mã phiếu nhập kho",
+        "clientCode": "Mã khách hàng",
+        "status": "Trạng thái",
+        "date": "Ngày theo trạng thái đơn hàng",
+        "itemPerPage": "Số bản ghi mỗi trang"
+      },
+      "note1": {
+        "note": "** Tìm kiếm theo ngày của trạng thái . Khi không chọn trạng thái , mặc định tìm kiếm theo ngày nhận ở kho Bằng Tường"
+      },
+      "button": {
+        "search": "Tìm kiếm",
+        "clear": "Xóa"
+      },
+      "import": {
+        "label": "Nhập Đơn hàng mới",
+        "title": "Tải lên Đơn hàng mới bằng tệp excel",
+        "changeStatus": "Thay đổi trạng thái",
+        "inputLabel": "Chọn tệp excel",
+        "inputTip": "Chỉ cho phép tệp .xlsx và .xls.",
+        "importDesc": "Vui lòng chọn tệp Excel mà bạn muốn tải lên.",
+        "transportVehicle": "Phương tiện vận chuyển",
+        "transportVehicleDate": "Ngày phương tiện vận chuyển"
+      },
+      "export": {
+        "label": "Xuất đơn hàng",
+        "error": {
+          "emptyOrderExport": "Vui lòng chọn đơn hàng để xuất!",
+          "failed": "Xuất đơn hàng lỗi, phiền quý khách liên hệ với quản trị viên để tiếp tục."
+        }
+      },
+      "created": "Một Đơn hàng mới đã được tạo với mã định danh {{ param }}",
+      "updated": "Đơn hàng đã được cập nhật với mã định danh {{ param }}",
+      "deleted": "Đơn hàng đã bị xóa với mã định danh {{ param }}",
+      "delete": {
+        "question": "Bạn có chắc chắn muốn xóa Đơn hàng {{ id }} không?"
+      },
+      "updateStatus": {
+        "message": {
+          "success": "Cập nhật trạng thái cho nhiều đơn hàng thành công!"
+        },
+        "error": {
+          "noOrders": "Không có đơn hàng nào được chọn!",
+          "failed": "Cập nhật trạng thái cho nhiều đơn hàng không thành công!"
+        }
+      },
+      "detail": {
+        "title": "Đơn hàng"
+      },
+      "code": "Mã định danh",
+      "receiptDate": "Ngày nhận",
+      "warehouseReceiptCode": "Mã phiếu nhận",
+      "searchWarehouseReceiptCode": "Tìm kiếm Mã Phiếu Kho...",
+      "warehouseReceiveNote": "Ghi chú nhận kho",
+      "status": "Trạng thái",
+      "changeStatus": "Đổi trạng thái",
+      "piecesReceivedCount": "Số lượng kiện",
+      "piecesWareHouseCount": "Số lượng kiện thực nhận",
+      "totalWeight": "Tổng trọng lượng",
+      "totalCubicMeter": "Tổng mét khối",
+      "extraFee": "Phí bổ sung",
+      "inlandFee": "Phí vận chuyển nội địa",
+      "extraFeeDetail": "Chi tiết phí bổ sung",
+      "waybill": "Vận đơn",
+      "note": "Ghi chú",
+      "productImages": "Hình ảnh sản phẩm",
+      "warehouse": "Kho hàng",
+      "inlandLogistic": "Vận tải nội địa",
+      "client": "Khách hàng",
+      "product": "Sản phẩm",
+      "productCn": "Sản phẩm tiếng Trung",
+      "productVn": "Sản phẩm tiếng Việt",
+      "unit": "Đơn vị",
+      "bangTuongWareHouseDate": "Ngày nhận ở kho Bằng Tường",
+      "loadedOnVehicleDate": "Ngày hàng lên xe",
+      "arrivedAtHNDate": "Ngày đến Hà Nội",
+      "deliveredDate": "Ngày vận chuyển",
+      "customerSignedDate": "Ngày khách hàng kí",
+      "cancelDate": "Ngày hủy",
+      "statusDate": "Ngày trạng thái",
+      "statusEnum": {
+        "BANG_TUONG_WARE_HOUSE": "Tại kho Bằng Tường",
+        "LOADED_ON_VEHICLE": "Đã chất lên xe",
+        "ARRIVED_AT_HN": "Đã đến Hà Nội",
+        "DELIVERED": "Đã giao hàng",
+        "CUSTOMER_SIGNED": "Khách hàng đã ký nhận",
+        "CANCELED": "Khách hàng đã hủy",
+        "null": "Không có trạng thái"
+      },
+      "selectStatus": "-- Chọn trạng thái --",
+      "selectCode": "-- Chọn mã --",
+      "importVehicleNumber": "Biển xe nhập",
+      "arrangeVehicle": "Biển xe trung chuyển",
+      "listCalculation": "Dãy Tính",
+      "unitPriceWeight": "Đơn giá cân",
+      "unitPriceCubicMeter": "Đơn giá theo khối",
+      "totalPrice": "Thành tiền",
+      "shippingAddressAndPhone": "Địa chỉ trả hàng và SĐT",
+      "exportVehicleNumber": "Biển xe xuất",
+      "exportQuantity": "Số lượng xuất",
+      "exportDate": "Ngày xuất"
+    }
+  }
+}

@@ -1,0 +1,49 @@
+# This configuration is intended for development purpose, it's **your** responsibility to harden it for production
+name: warehouse
+services:
+  app:
+    image: warehouse
+    environment:
+      - _JAVA_OPTIONS=-Xmx512m -Xms256m
+      - SPRING_PROFILES_ACTIVE=prod,api-docs
+      - MANAGEMENT_PROMETHEUS_METRICS_EXPORT_ENABLED=true
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgresql:5432/wareHouse
+      - SPRING_LIQUIBASE_URL=jdbc:postgresql://postgresql:5432/wareHouse
+      - VIRTUAL_HOST=warehouse.aninfosys.asia
+      - VIRTUAL_PORT=8080
+      - LETSENCRYPT_HOST=dichlyvn.com
+      - LETSENCRYPT_EMAIL=rvdung@gmail.com
+    deploy:
+      restart_policy:
+        condition: any
+      replicas: 1
+      placement:
+        constraints:
+          - node.hostname == vmi888571
+    networks:
+      - external
+      - internal
+    ports:
+      - '127.0.0.1:8080:8080'
+    healthcheck:
+      test:
+        - CMD
+        - curl
+        - -f
+        - http://localhost:8080/management/health
+      interval: 5s
+      timeout: 5s
+      retries: 40
+    depends_on:
+      postgresql:
+        condition: service_healthy
+  postgresql:
+    extends:
+      file: postgresql-uat.yml
+      service: postgresql
+
+networks:
+  internal:
+  external:
+    external:
+      name: 'anfo'

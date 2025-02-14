@@ -1,0 +1,11 @@
+{
+  "logs": {
+    "title": "日志",
+    "nbloggers": "有 {{ total }} 伐木工。",
+    "filter": "筛选",
+    "table": {
+      "name": "姓名",
+      "level": "等级"
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "settings": {
+    "title": "[<strong>{{username}}</strong>] 的用户设置",
+    "form": {
+      "firstname": "名字",
+      "firstname.placeholder": "您的名字",
+      "lastname": "姓氏",
+      "lastname.placeholder": "您的姓氏",
+      "language": "语言",
+      "button": "保存"
+    },
+    "messages": {
+      "error": {
+        "fail": "<strong>发生错误！</strong> 无法保存设置。",
+        "emailexists": "<strong>电子邮件已被使用！</strong> 请使用其他邮箱。"
+      },
+      "success": "<strong>设置已成功保存！</strong>",
+      "validate": {
+        "firstname": {
+          "required": "您的名字是必填项。",
+          "minlength": "名字至少需要 1 个字符。",
+          "maxlength": "名字不能超过 50 个字符。"
+        },
+        "lastname": {
+          "required": "您的姓氏是必填项。",
+          "minlength": "姓氏至少需要 1 个字符。",
+          "maxlength": "姓氏不能超过 50 个字符。"
+        }
+      }
+    }
+  }
+}

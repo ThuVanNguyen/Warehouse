@@ -1,0 +1,166 @@
+<div class="d-flex justify-content-center">
+  @if (order(); as orderRef) {
+    <div class="col-8">
+      <h2 data-cy="orderDetailsHeading"><span jhiTranslate="wareHouseApp.order.detail.title">Order</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row jh-entity-details">
+        <div class="col-6">
+          <div class="row-md jh-entity-details">
+            <dt><span jhiTranslate="wareHouseApp.order.code">Code</span></dt>
+            <dd>
+              <span>{{ orderRef.id }}</span>
+            </dd>
+            <dt><span jhiTranslate="wareHouseApp.order.warehouseReceiptCode">Warehouse Receipt Code</span></dt>
+            <dd>
+              <span>{{ orderRef.warehouseReceiptCode }}</span>
+            </dd>
+            <dt><span jhiTranslate="wareHouseApp.order.waybill">Waybill</span></dt>
+            <dd>
+              <span>{{ orderRef.waybill }}</span>
+            </dd>
+            <dt><span jhiTranslate="wareHouseApp.order.client">Client</span></dt>
+            <dd>
+              @if (order()!.client) {
+                <div>
+                  <a [routerLink]="['/client', order()!.client?.id, 'view']">{{ orderRef.client?.code }}</a>
+                </div>
+              }
+            </dd>
+            <dt><span jhiTranslate="wareHouseApp.order.status">Status</span></dt>
+            <dd>
+              <span>{{ 'wareHouseApp.order.statusEnum.' + orderRef.status | translate }}</span>
+            </dd>
+            <dt><span jhiTranslate="wareHouseApp.order.productCn">Product in Chinese</span></dt>
+            <dd>
+              <span>{{ orderRef.productCn }}</span>
+            </dd>
+            <dt><span jhiTranslate="wareHouseApp.order.productVn">Product in Vietnames</span></dt>
+            <dd>
+              <span>{{ orderRef.productVn }}</span>
+            </dd>
+            <dt><span jhiTranslate="wareHouseApp.order.piecesReceivedCount">Pieces Received Count</span></dt>
+            <dd>
+              <span>{{ orderRef.piecesReceivedCount }}</span>
+            </dd>
+            <dt><span jhiTranslate="wareHouseApp.order.piecesWareHouseCount">Pieces Warehouse Count</span></dt>
+            <dd>
+              <span>{{ orderRef.piecesWareHouseCount }}</span>
+            </dd>
+            <dt><span jhiTranslate="wareHouseApp.order.totalWeight">Total Weight</span></dt>
+            <dd>
+              <span>{{ orderRef.totalWeight }}</span>
+            </dd>
+            <dt><span jhiTranslate="wareHouseApp.order.totalCubicMeter">Total Cubic Meter</span></dt>
+            <dd>
+              <span>{{ orderRef.totalCubicMeter }}</span>
+            </dd>
+
+            @if (isAdminOrEditor) {
+              <dt><span jhiTranslate="wareHouseApp.order.listCalculation">List Calculation</span></dt>
+              <dd>
+                <span>{{ orderRef.listCalculation }}</span>
+              </dd>
+              <dt><span jhiTranslate="wareHouseApp.order.unitPriceWeight">Unit Price Weight</span></dt>
+              <dd>
+                <span>{{ orderRef.unitPriceWeight }}</span>
+              </dd>
+              <dt><span jhiTranslate="wareHouseApp.order.unitPriceCubicMeter">Unit Price Cubic Meter</span></dt>
+              <dd>
+                <span>{{ orderRef.unitPriceCubicMeter }}</span>
+              </dd>
+              <dt><span jhiTranslate="wareHouseApp.order.totalPrice">Total Price</span></dt>
+              <dd>
+                <span>{{ orderRef.totalPrice }}</span>
+              </dd>
+            }
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="row-md jh-entity-details">
+            <dt><span jhiTranslate="wareHouseApp.order.bangTuongWareHouseDate">Bang Tuong Warehouse Date</span></dt>
+            <dd>
+              <span>{{ orderRef.receiptDate | formatMediumDate }}</span>
+            </dd>
+            <dt><span jhiTranslate="wareHouseApp.order.loadedOnVehicleDate">Loaded On Vehicle Date</span></dt>
+            <dd>
+              <span>{{ orderRef.loadedOnVehicleDate | formatMediumDate }}</span>
+            </dd>
+            <dt><span jhiTranslate="wareHouseApp.order.arrivedAtHNDate">Arrived at Hanoi Date</span></dt>
+            <dd>
+              <span>{{ orderRef.arrivedAtHNDate | formatMediumDate }}</span>
+            </dd>
+            <dt><span jhiTranslate="wareHouseApp.order.deliveredDate">Delivered Date</span></dt>
+            <dd>
+              <span>{{ orderRef.deliveredDate | formatMediumDate }}</span>
+            </dd>
+            <dt><span jhiTranslate="wareHouseApp.order.customerSignedDate">Customer Signed Date</span></dt>
+            <dd>
+              <span>{{ orderRef.customerSignedDate | formatMediumDate }}</span>
+            </dd>
+            <dt><span jhiTranslate="wareHouseApp.order.cancelDate">Cancel Date</span></dt>
+            <dd>
+              <span>{{ orderRef.cancelDate | formatMediumDate }}</span>
+            </dd>
+            <dt><span jhiTranslate="wareHouseApp.order.shippingAddressAndPhone">Shipping Address and Phone number</span></dt>
+            <dd>
+              <span>{{ orderRef.shippingAddressAndPhone }}</span>
+            </dd>
+            <dt><span jhiTranslate="wareHouseApp.order.importVehicleNumber">Import Vehicle Number</span></dt>
+            <dd>
+              <span>{{ orderRef.importVehicleNumber }}</span>
+            </dd>
+            <dt><span jhiTranslate="wareHouseApp.order.arrangeVehicle">Arrange Vehicle</span></dt>
+            <dd>
+              <span>{{ orderRef.arrangeVehicle }}</span>
+            </dd>
+            <dt><span jhiTranslate="wareHouseApp.order.exportVehicleNumber">Export Vehicle Number</span></dt>
+            <dd>
+              <span>{{ orderRef.exportVehicleNumber }}</span>
+            </dd>
+            <dt><span jhiTranslate="wareHouseApp.order.exportDate">Export Date</span></dt>
+            <dd>
+              <span>{{ orderRef.exportDate | formatMediumDate }}</span>
+            </dd>
+            <dt><span jhiTranslate="wareHouseApp.order.exportQuantity">Export Quantity</span></dt>
+            <dd>
+              <span>{{ orderRef.exportQuantity }}</span>
+            </dd>
+            <dt><span jhiTranslate="wareHouseApp.order.note">Note</span></dt>
+            <dd>
+              <span>{{ orderRef.note }}</span>
+            </dd>
+          </div>
+        </div>
+        <hr />
+        <div>
+          <dt><span jhiTranslate="wareHouseApp.order.productImages">Product Image</span></dt>
+          <dd>
+            @if (order()!.productImages!.length > 0) {
+              @for (image of order()!.productImages; track $index) {
+                <img [src]="image.base64" width="250px" alt="{{ image.base64 }}" />
+              }
+            }
+          </dd>
+        </div>
+      </dl>
+
+      <hr />
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      @if (isAdminOrEditor) {
+        <button type="button" [routerLink]="['/order', orderRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      }
+    </div>
+  }
+</div>

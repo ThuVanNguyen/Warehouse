@@ -1,0 +1,78 @@
+entity Order {
+  id Long,
+  receiptDate LocalDate,
+  warehouseReceiptCode String,
+  warehouseReceiveNote String,
+  piecesReceivedCount Long,
+  piecesLoadedCount Long,
+  totalWeight Double,
+  totalCubicMeter Double,
+  extraFee Double,
+  inlandFee Double,
+  extraFeeDetail String,
+  waybill String,
+  note String ,
+
+}
+
+entity Warehouse {
+  id Long,
+  code String,
+  name String,
+  description String
+}
+
+entity InlandLogistic {
+  id Long,
+  code String,
+  name String
+}
+
+entity Client {
+  id Long,
+  code String,
+  name String,
+  email String,
+  phone String
+}
+
+entity Product {
+  id Long,
+  nameCn String,
+  nameVn String,
+  description String
+}
+
+entity ProductImage {
+  id Long,
+  code String,
+  len Long,
+  createDate LocalDate,
+  type String,
+  base64 String
+}
+
+entity Unit {
+  id Long,
+  code String
+}
+
+// Relationships
+relationship ManyToOne {
+  Order{warehouse} to Warehouse,
+  Order{inlandLogistic} to InlandLogistic,
+  Order{client} to Client,
+  Order{product} to Product,
+  Order{unit} to Unit
+}
+
+relationship OneToMany {
+  Order{productImages(code)} to ProductImage,
+}
+
+// Indexing
+paginate Order, Warehouse, InlandLogistic, Client, Product, ProductImage, Unit with pagination
+
+// DTO and Service Options
+dto * with mapstruct
+service * with serviceClass

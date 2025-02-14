@@ -1,0 +1,33 @@
+{
+  "health": {
+    "title": "健康检查",
+    "refresh.button": "刷新",
+    "stacktrace": "堆栈跟踪",
+    "details": {
+      "details": "细节",
+      "properties": "特性",
+      "name": "姓名",
+      "value": "价值",
+      "error": "错误"
+    },
+    "indicator": {
+      "binders": "消息代理",
+      "diskSpace": "磁盘空间",
+      "mail": "电子邮件",
+      "livenessState": "活性状态",
+      "readinessState": "准备状态",
+      "ping": "应用",
+      "db": "数据库"
+    },
+    "table": {
+      "service": "服务名称",
+      "status": "地位"
+    },
+    "status": {
+      "UNKNOWN": "未知",
+      "UP": "向上",
+      "OUT_OF_SERVICE": "中止服务",
+      "DOWN": "向下"
+    }
+  }
+}

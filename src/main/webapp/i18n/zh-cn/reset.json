@@ -1,0 +1,26 @@
+{
+  "reset": {
+    "request": {
+      "title": "重置您的密码",
+      "form": {
+        "button": "重置密码"
+      },
+      "messages": {
+        "info": "输入您注册时使用的电子邮件地址",
+        "success": "检查您的电子邮件以了解有关如何重置密码的详细信息。"
+      }
+    },
+    "finish": {
+      "title": "重置密码",
+      "form": {
+        "button": "验证新密码"
+      },
+      "messages": {
+        "info": "选择新密码",
+        "success": "<strong>您的密码已重置。</strong> 请 ",
+        "keymissing": "重置键丢失。",
+        "error": "无法重置您的密码。"
+      }
+    }
+  }
+}

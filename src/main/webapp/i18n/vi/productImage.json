@@ -1,0 +1,46 @@
+{
+  "wareHouseApp": {
+    "productImage": {
+      "home": {
+        "title": "Hình ảnh Sản phẩm",
+        "refreshListLabel": "Làm mới danh sách",
+        "createLabel": "Tạo mới Hình ảnh Sản phẩm",
+        "createOrEditLabel": "Tạo hoặc chỉnh sửa Hình ảnh Sản phẩm",
+        "notFound": "Không tìm thấy Hình ảnh Sản phẩm nào"
+      },
+      "search": {
+        "placeHolder": "Tìm kiếm hình ảnh Sản phẩm..."
+      },
+
+      "convert": {
+        "title": "Tải hình ảnh",
+        "convertDesc": "Vui lòng chọn hình ảnh bạn muốn tải lên.",
+        "inputTip": "Chỉ chấp nhận các tập tin hình ảnh."
+      },
+      "typeCode": {
+        "AD": "Ảnh giới thiệu",
+        "WRAP": "Ảnh đóng gói",
+        "REAL": "Ảnh thực tế",
+        "WAYBILL_RECEIVE": "Ảnh nhận ký gửi",
+        "OTHER": "Ảnh khác"
+      },
+      "created": "Một Hình ảnh Sản phẩm mới đã được tạo với mã định danh {{ param }}",
+      "updated": "Hình ảnh Sản phẩm đã được cập nhật với mã định danh {{ param }}",
+      "deleted": "Hình ảnh Sản phẩm đã bị xóa với mã định danh {{ param }}",
+      "delete": {
+        "question": "Bạn có chắc chắn muốn xóa Hình ảnh Sản phẩm {{ id }} không?"
+      },
+      "detail": {
+        "title": "Hình ảnh Sản phẩm"
+      },
+      "id": "Mã định danh",
+      "code": "Mã",
+      "len": "Độ dài",
+      "createDate": "Ngày tạo",
+      "type": "Loại",
+      "base64": "Base 64",
+      "imageUrl": "Đường dẫn ảnh",
+      "order": "Thứ tự"
+    }
+  }
+}

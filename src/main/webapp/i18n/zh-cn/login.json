@@ -1,0 +1,19 @@
+{
+  "login": {
+    "title": "登入",
+    "form": {
+      "password": "密码",
+      "password.placeholder": "您的密码",
+      "rememberme": "记住账号",
+      "button": "登入"
+    },
+    "messages": {
+      "error": {
+        "authentication": "<strong>登录失败！</strong> 请检查您的凭据并重试。"
+      }
+    },
+    "password": {
+      "forgot": "您忘记密码了吗？"
+    }
+  }
+}

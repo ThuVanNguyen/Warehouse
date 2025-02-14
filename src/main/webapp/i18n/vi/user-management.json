@@ -1,0 +1,35 @@
+{
+  "userManagement": {
+    "home": {
+      "title": "Người dùng",
+      "refreshListLabel": "Làm mới danh sách",
+      "createLabel": "Tạo mới người dùng",
+      "createOrEditLabel": "Tạo hoặc chỉnh sửa người dùng"
+    },
+    "created": "Một người dùng mới đã được tạo với mã định danh {{ param }}",
+    "updated": "Người dùng đã được cập nhật với mã định danh {{ param }}",
+    "deleted": "Người dùng đã bị xóa với mã định danh {{ param }}",
+    "delete": {
+      "question": "Bạn có chắc chắn muốn xóa người dùng {{ login }} không?"
+    },
+    "detail": {
+      "title": "Người dùng"
+    },
+    "login": "Tên đăng nhập",
+    "firstName": "Tên",
+    "lastName": "Họ",
+    "email": "Email",
+    "clientCode": "Mã khách hàng",
+    "activated": "Kích hoạt",
+    "deactivated": "Hủy kích hoạt",
+    "profiles": "Hồ sơ",
+    "langKey": "Ngôn ngữ",
+    "createdBy": "Tạo bởi",
+    "createdDate": "Ngày tạo",
+    "lastModifiedBy": "Sửa bởi",
+    "lastModifiedDate": "Ngày sửa",
+    "password": "Mật khẩu",
+    "confirmPassword": "Xác nhận mật khẩu",
+    "matchPassword": "Mật khẩu và xác nhận mật khẩu không khớp!"
+  }
+}

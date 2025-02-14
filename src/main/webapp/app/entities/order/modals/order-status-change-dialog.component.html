@@ -1,0 +1,71 @@
+<!-- Modal Header -->
+<div class="modal-header">
+  <h4 class="modal-title" data-cy="fileUploadDialogHeading" jhiTranslate="wareHouseApp.order.import.changeStatus">Change Status</h4>
+</div>
+
+<!-- Modal Body -->
+<div class="modal-body">
+  <form class="addClientOrderFrom" (ngSubmit)="saveOrdersWithNewStatus()" [formGroup]="updateStatusForm">
+    <jhi-alert></jhi-alert>
+    <jhi-alert-error></jhi-alert-error>
+
+    <div class="mt-2">
+      <label for="statusSelect" class="form-label" jhiTranslate="wareHouseApp.order.status">Status</label>
+      <select id="statusSelect" class="form-control" formControlName="status">
+        @for (item of statusCollection; track $index) {
+          <option [ngValue]="item[0]">{{ item[1] }}</option>
+        }
+      </select>
+
+      @let statusRef = updateStatusForm.get('status')!;
+      @if (statusRef.invalid && (statusRef.dirty || statusRef.touched)) {
+        @if (statusRef.errors?.required) {
+          <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+        }
+      }
+    </div>
+
+    <div class="mt-2">
+      <label for="transportVehicleDate" class="form-label" jhiTranslate="wareHouseApp.order.statusDate">Status Date</label>
+      <div class="input-group">
+        <input
+          id="transportVehicleDate"
+          data-cy="transportVehicleDate"
+          type="text"
+          class="form-control"
+          ngbDatepicker
+          #statusDateChangeDp="ngbDatepicker"
+          formControlName="date"
+        />
+        <button type="button" class="btn btn-secondary" (click)="statusDateChangeDp.toggle()">
+          <fa-icon icon="calendar-alt"></fa-icon>
+        </button>
+      </div>
+
+      @let dateRef = updateStatusForm.get('date')!;
+      @if (dateRef.invalid && (dateRef.dirty || dateRef.touched)) {
+        @if (dateRef.errors?.required) {
+          <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+        }
+      }
+    </div>
+  </form>
+</div>
+
+<!-- Modal Footer -->
+<div class="modal-footer">
+  <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="cancel()">
+    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+  </button>
+
+  <button
+    type="submit"
+    id="save-entity"
+    data-cy="entityCreateSaveButton"
+    [disabled]="!updateStatusForm"
+    class="btn btn-primary"
+    (click)="saveOrdersWithNewStatus()"
+  >
+    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+  </button>
+</div>

@@ -1,0 +1,117 @@
+{
+  "wareHouseApp": {
+    "order": {
+      "home": {
+        "title": "订单",
+        "refreshListLabel": "刷新列表",
+        "createLabel": "创建新订单",
+        "createOrEditLabel": "创建或编辑订单",
+        "notFound": "没有找到订单"
+      },
+      "search": {
+        "placeHolder": "根据运单号搜索订单..."
+      },
+      "label": {
+        "warehouseReceiptCode": "仓库收据代码",
+        "clientCode": "客户代码",
+        "status": "状态",
+        "date": "按订单状态的日期",
+        "itemPerPage": "每页记录数"
+      },
+      "note1": {
+        "note": "** 根据状态的日期进行搜索。如果未选择状态，则默认根据邦墙仓库的收货日期进行搜索。"
+      },
+      "button": {
+        "search": "搜索",
+        "clear": "清除"
+      },
+      "import": {
+        "label": "导入新订单",
+        "title": "通过excel文件上传新订单",
+        "changeStatus": "改变状态",
+        "inputLabel": "选择Excel文件",
+        "inputTip": "仅允许使用 .xlsx 和 .xls 文件。",
+        "importDesc": "请选择您要上传的 Excel 文件。",
+        "transportVehicle": "运输车辆",
+        "transportVehicleDate": "运输车辆日期"
+      },
+      "export": {
+        "label": "导出订单",
+        "error": {
+          "emptyOrderExport": "请选择要导出的订单！",
+          "failed": "订单导出失败，请联系管理员继续。"
+        }
+      },
+      "created": "使用标识符创建新订单 {{ param }}",
+      "updated": "使用标识符更新订单 {{ param }}",
+      "deleted": "订单被删除并带有标识符 {{ param }}",
+      "delete": {
+        "question": "您确定要删除订单吗 {{ id }}？"
+      },
+      "updateStatus": {
+        "message": {
+          "success": "更新多个订单状态成功！"
+        },
+        "error": {
+          "noOrders": "未选择订单！",
+          "failed": "更新多个订单状态失败！"
+        }
+      },
+      "detail": {
+        "title": "命令"
+      },
+      "code": "代码",
+      "receiptDate": "收据日期",
+      "warehouseReceiptCode": "仓单代码",
+      "searchWarehouseReceiptCode": "搜索仓库收据代码...",
+      "warehouseReceiveNote": "仓库收货单",
+      "status": "地位",
+      "changeStatus": "改变状态",
+      "piecesReceivedCount": "收到件数",
+      "piecesWareHouseCount": "装载件数",
+      "totalWeight": "总重量",
+      "totalCubicMeter": "总立方米",
+      "extraFee": "额外费用",
+      "inlandFee": "内陆费",
+      "extraFeeDetail": "额外费用详情",
+      "waybill": "运单",
+      "note": "笔记",
+      "productImages": "产品图片",
+      "warehouse": "仓库",
+      "inlandLogistic": "内陆物流",
+      "client": "客户",
+      "product": "产品",
+      "productCn": "中国产品",
+      "productVn": "越南产品",
+      "unit": "单元",
+      "bangTuongWareHouseDate": "邦墙仓库收货日期",
+      "loadedOnVehicleDate": "装车日期",
+      "arrivedAtHNDate": "抵达河内日期",
+      "deliveredDate": "交货日期",
+      "customerSignedDate": "客户签署日期",
+      "cancelDate": "取消日期",
+      "statusDate": "状态日期",
+      "statusEnum": {
+        "BANG_TUONG_WARE_HOUSE": "在BangTuong仓库",
+        "LOADED_ON_VEHICLE": "已装载到车辆",
+        "ARRIVED_AT_HN": "已到达河内",
+        "DELIVERED": "已送达",
+        "CUSTOMER_SIGNED": "客户已签收",
+        "CANCELED": "客户已取消",
+        "null": "无状态"
+      },
+      "selectStatus": "-- 选择状态 --",
+      "selectCode": "-- 选择代码 --",
+      "importVehicleNumber": "导入车辆编号",
+      "arrangeVehicle": "过境车辆标志",
+      "listCalculation": "列表计算",
+      "unitPriceWeight": "按重量计算的单价",
+      "unitPriceCubicMeter": "每立方单价",
+      "totalPrice": "总价",
+      "shippingAddressAndPhone": "退货地址和电话号码",
+      "exportVehicleNumber": "出口车辆编号",
+      "exportQuantity": "出口数量",
+      "exportDate": "出口日期"
+    }
+  }
+}

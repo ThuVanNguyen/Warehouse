@@ -1,0 +1,28 @@
+{
+  "wareHouseApp": {
+    "inlandLogistic": {
+      "home": {
+        "title": "Vận tải nội địa",
+        "refreshListLabel": "Làm mới danh sách",
+        "createLabel": "Tạo mới Vận tải nội địa",
+        "createOrEditLabel": "Tạo hoặc chỉnh sửa Vận tải nội địa",
+        "notFound": "Không tìm thấy Vận tải nội địa nào"
+      },
+      "search": {
+        "placeHolder": "Tìm kiếm vận tải nội địa..."
+      },
+      "created": "Một Vận tải nội địa mới đã được tạo với mã định danh {{ param }}",
+      "updated": "Vận tải nội địa đã được cập nhật với mã định danh {{ param }}",
+      "deleted": "Vận tải nội địa đã bị xóa với mã định danh {{ param }}",
+      "delete": {
+        "question": "Bạn có chắc chắn muốn xóa Vận tải nội địa {{ id }} không?"
+      },
+      "detail": {
+        "title": "Chi tiết Vận tải nội địa"
+      },
+      "id": "Mã định danh",
+      "code": "Mã",
+      "name": "Tên"
+    }
+  }
+}
