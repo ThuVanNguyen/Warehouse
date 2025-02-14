@@ -1,0 +1,9 @@
+1, kết nối database 
+   url: jdbc:postgresql://localhost:5432/wareHouse
+   username: wareHouse
+   password: 1234
+
+2, do file excel mới nhất đã bị mất nên ta phải thêm tay vào thì mới có dữ liệu . File excel bên dưới là của phiên bản 
+   cũ 
+
+3, có thuật toán xử lý ô gộp rất hay trong code 
