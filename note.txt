@@ -10,4 +10,4 @@
 
 4, lệnh chạy chương trình cho cả BE và FE : ./mvnw 
    lệnh chạy phần BE : click nút run 
-   lệnh chạy phần FE : ng serve ( bên VS code ) 
+   lệnh chạy phần FE : ng serve ( bên VS code ) hay ./npmw run webapp:dev
