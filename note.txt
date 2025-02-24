@@ -3,11 +3,8 @@
    username: wareHouse
    password: 1234
 
-2, do file excel mới nhất đã bị mất nên ta phải thêm tay vào thì mới có dữ liệu . File excel bên dưới là của phiên bản 
-   cũ 
+2, có thuật toán xử lý ô gộp rất hay trong code 
 
-3, có thuật toán xử lý ô gộp rất hay trong code 
-
-4, lệnh chạy chương trình cho cả BE và FE : ./mvnw 
+3, lệnh chạy chương trình cho cả BE và FE : ./mvnw 
    lệnh chạy phần BE : click nút run 
    lệnh chạy phần FE : ng serve ( bên VS code ) hay ./npmw run webapp:dev
